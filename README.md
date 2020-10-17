@@ -30,7 +30,7 @@ Veremos los principios básicos de desarrollo Fron-End y su interacción y uso d
 - [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
 - [Microsoft Visual Studio Community 2019](https://visualstudio.microsoft.com/vs/)
 - [Asp.net core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
-- [Visual Studio Code] https://code.visualstudio.com/)
+- [Visual Studio Code](https://code.visualstudio.com/)
 - [PostMan](https://www.postman.com/downloads/)
 
 ## Extensiones
