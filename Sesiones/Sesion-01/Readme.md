@@ -43,9 +43,11 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 # Insertar Datos
 
 **1.** Abra el archivo **Ins_Users.sql** presionando las teclas **CTRL + O** y ejecute el script.
+
 **2.** Luego presione las teclas **CTRL + N** y ejecute el siguiente script para mostrar los usuarios.
 
 ```SQL
 SELECT * FROM [User]
 GO
-``` 
+```
+
