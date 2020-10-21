@@ -31,8 +31,21 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 ![New Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-06.png)
 
-**8.** Guarde los cambios presionando las teclas **CTRL + s** o haga click en el disquete para guardar la base de datos y darle un nombre.
+**8.** Guarde los cambios presionando las teclas **CTRL + S** o haga click en el disquete para guardar la base de datos y darle un nombre.
+
+**9.** Asigne el nombre **User** para la tabla.
 
 ![New Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-07.png)
 
-9. Por último asigne el nombre **User** par la tabla.
+**10.** Por último presione la tecla **F5** para refrescar los datos y ver la tabla creada.
+
+
+# Insertar Datos
+
+**1.** Abra el archivo **Ins_Users.sql** presionando las teclas **CTRL + O** y ejecute el script.
+**2.** Luego presione las teclas **CTRL + N** y ejecute el siguiente script para mostrar los usuarios.
+
+```SQL
+SELECT * FROM [User]
+GO
+``` 
