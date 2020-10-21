@@ -3,6 +3,6 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 1. Haga click derecho sobre el nodo de databases y seleccione la opción **New Database...**
 
-[](./Database-01.jpg)
+[](https://github.com/Jucer74/WebDev/tree/main/Sesiones/Sesion-01/Database-01.jpg)
 
 2. 
