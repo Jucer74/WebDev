@@ -46,9 +46,10 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 **2.** Luego presione las teclas **CTRL + N** y ejecute el siguiente script para mostrar los usuarios.
 
-
-    SELECT * FROM [Users]
-    GO
+```sql
+SELECT * FROM [Users]
+GO
+```
     
 
 # Crear Usuario Admin
@@ -64,7 +65,7 @@ Vamos a crear un usuario administrador para poder aceder a la base de datos desd
 - Select **SQL Server Autentication**
 	- **Password:** Admin123
 	- **Confirm Password:** Admin 123 
-- Uncheck Enforce password policy
+- **Uncheck** Enforce password policy
 - **Default database:** UsersDB
 
 ![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-09.png)
@@ -80,5 +81,5 @@ Vamos a crear un usuario administrador para poder aceder a la base de datos desd
 
 ![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-10.png)
 
-**4.** Presiona el botón de **OK** 
+**4.** Presiona el botón de **OK** para confirmar los cambios.
 
