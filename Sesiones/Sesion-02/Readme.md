@@ -97,7 +97,7 @@ Ahora adicionemos el contexto que es la representacion de lo que podria ser la b
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-14.png)
 
-**5.** Ahora procedemos a complementar la clase AppDbContext de la siguiente manera:
+**5.** Ahora procedemos a complementar la clase **AppDbContext** de la siguiente manera:
 
 
 
