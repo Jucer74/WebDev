@@ -33,7 +33,7 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 **8.** Guarde los cambios presionando las teclas **CTRL + S** o haga click en el disquete para guardar la base de datos y darle un nombre.
 
-**9.** Asigne el nombre **User** para la tabla.
+**9.** Asigne el nombre **Users** para la tabla.
 
 ![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-07.png)
 
@@ -46,8 +46,39 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 **2.** Luego presione las teclas **CTRL + N** y ejecute el siguiente script para mostrar los usuarios.
 
-```SQL
-SELECT * FROM [User]
-GO
-```
+
+    SELECT * FROM [Users]
+    GO
+    
+
+# Crear Usuario Admin
+Vamos a crear un usuario administrador para poder aceder a la base de datos desde nuestra aplicación.
+
+**1.** Selecciona el nodo **Security/Logins** y haz click derecho sobre el y en el menú flotante y escoge la opción **New Login...**.
+
+![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-08.png)
+
+**2.** En la Sección de **General ** llena los campos así:
+
+- **Login Name:** Admin
+- Select **SQL Server Autentication**
+	- **Password:** Admin123
+	- **Confirm Password:** Admin 123 
+- Uncheck Enforce password policy
+- **Default database:** UsersDB
+
+![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-09.png)
+
+**3.** En la sección de **User Mapping** llena nos campos así:
+
+- Users mapped to this login: 
+	- Selecciona la base de datos **UsersDB** 
+- Database role membership for: UserdDB: 
+	- Selecciona:
+		- db_owner
+		- public
+
+![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-10.png)
+
+**4.** Presiona el botón de **OK** 
 
