@@ -17,7 +17,7 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 ![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-04.png)
 
-	Id			: 	int				Not Null
+	Id			:	int				Not Null
 	Email		:	Varchar(255)	Not Null
 	Name		:	Varchar(255)	Not Null
 	Password	:	Varchar(255)	Not Null
