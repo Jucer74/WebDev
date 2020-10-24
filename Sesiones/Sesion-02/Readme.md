@@ -178,8 +178,111 @@ Al final tenemos algo como lo siguiente:
 }
 ```
 
-**4.** Ahora referenciemos la cadena de conexion dentro de los servicios de la aplicación, para ello modificaremos la clase **StartUp**
+**4.** Para hacer uso de la conexion a la base de datos SQL Server debemos importar el NuGet correspondiente, en este caso instalamos **Microsoft.EntityFrameworkCore.SqlServer**, lo hacemos de igual forma como instalamos el Entity Framework Core.
 
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-15.png)
 
- 
+**5.** Ahora referenciemos la cadena de conexion dentro de los servicios de la aplicación, para ello modificaremos la clase **StartUp**
 
+**a.** Importamos nuestro contexto y las librerias de Entity Framework Core y las correspondinetes a SQL Server, para ello incluimos las siguientes lineas:
+
+```csharp
+using WebDev.Api.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+ ```
+
+**b.** Ahora modificaremos la función **ConfigureServices** para adicionar nuestro servicio de conexión, adicionando el llamdo de la cadena de conexión, de la siguiente forma:
+
+```csharp
+services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CnnStr")));
+ ```
+
+**c.** Al final nos debe quedar algo como esto:
+```csharp
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+  services.AddControllers();
+  services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CnnStr")));
+}
+```
+
+# El Controlador
+Ahora pasaremos a crear el controlador para poder acceder a los servicios propios de la base de atos interactuando con el Contexto y el modelo. para ello seguiemos los siguientes pasos:
+
+**1.** Seleccione la carpeta de **Controllers** haciendo click derecho, y escogiendo la opción de **Add/Controller...**
+
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-16.png)
+
+**2.** Ahora seleccionaremos el tipo de Controller que necesitamos, en este caso será: **API Controller with actions, using Entity Framework**
+
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-17.png)
+
+3. Ahora seleccionamos nuestra clase del Modelo (**User**), la clase del contexto (**AppDbContext**) y validamos que se construye el nombre **UsersController** en el nombre del controlador. 
+
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-18.png)
+
+Tenga presente que el controlador siempre deberá llevar la palabra Controller al final, ya que esta es la forma en como .Net lo referencia internamente.
+
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-19.png)
+
+De esta forma ya hemos creado un nuevo controlador con todas las operaciones necesarias para interactuar con la base de datos.
+
+# Configurar el Arranque
+Ahora vamos a cambiar nuestro proyecto para que al iniciar tome por defecto nuestro nuevo controlador y no el que trae por defecto que se llama **weatherforecast**, para ello ejecutaremos los siguientes pasos:
+
+**1.** Selecciona el archivo **launchSettings.json** que esta dentro de la carpeta **Properties**.
+
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-20.png)
+
+**2.** Reemplace todas las referencias a **weatherforecast** por el nuevo controlador, en nuestro caso seria **api/users**, al final tendríamos algo como lo siguiente:
+
+```json
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:59565",
+      "sslPort": 44314
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "api/users",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "WebDev.Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/users",
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
+```
+
+# Probemos que funciona
+Para validar que todo esta funcionando correctamente ejecutaremos el proyecto, presionando la tecla **F5** y validaremos el resultado.
+
+En este punto debemos ver algo parecido a esto:
+
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-21.png)
+
+Asi podemos ver la lista de todos los usuarios que tenemos en la tabla de nuestra base de datos.
+
+De igual forma ahora podemos ejecutar todos las acciones utilizando nuestra API.
+
+# Adicionemos SWAGGER
+PAra facilitar el proceso de pruebas de todas las acciones, adicionaremos el servicio de Swagger a nuestra aplicación, de esta forma será mucho mas facil consumir nuestra API directamente. para ello ejecutaremos los siguientes pasos:
+
+1. 
