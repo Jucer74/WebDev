@@ -151,14 +151,14 @@ namespace WebDev.Api.Context
 # La cadena de conexión.
 Ahora pasaremos a establecer la cadena de conexión hacia la base de datos. Para ellos realizaremos los siguientes pasos:
 
-**1.** Seleccionamos el archivo **appsettins.json**
-**2.** Al final y siguiend las reglas de JSON, adicionamos uns nueva section llamada **ConnectionStrings**
-**3.** En esta nueva seccion creamos nuestra nueva cadena de conexión hacia la base de datos y la llamaremos **CnnStr**, en la cual referenciaremos los siguiente:
-- La fuente de los datos o nuestro servidor local: **localhost**
-- El catalogo inicial de datos o nombre de nuestra base de datos: **UsersDB**
-- El usuario de base de datos: **Admin**
-- El password del usuario: **Admin123**
-- Adicionamos la opción de multiple concurrencia: **MultipleActiveResultSets=true** 
+1. Seleccionamos el archivo **appsettins.json** .
+2. Al final y siguiend las reglas de JSON, adicionamos uns nueva section llamada **ConnectionStrings** .
+3. En esta nueva seccion creamos nuestra nueva cadena de conexión hacia la base de datos y la llamaremos **CnnStr**, en la cual referenciaremos los siguiente:
+	- La fuente de los datos o nuestro servidor local: **localhost**
+	- El catalogo inicial de datos o nombre de nuestra base de datos: **UsersDB**
+	- El usuario de base de datos: **Admin**
+	- El password del usuario: **Admin123**
+	- Adicionamos la opción de multiple concurrencia: **MultipleActiveResultSets=true** 
 
 Al final tenemos algo como lo siguiente:
 
@@ -178,11 +178,11 @@ Al final tenemos algo como lo siguiente:
 }
 ```
 
-**4.** Para hacer uso de la conexion a la base de datos SQL Server debemos importar el NuGet correspondiente, en este caso instalamos **Microsoft.EntityFrameworkCore.SqlServer**, lo hacemos de igual forma como instalamos el Entity Framework Core.
+4. Para hacer uso de la conexion a la base de datos SQL Server debemos importar el NuGet correspondiente, en este caso instalamos **Microsoft.EntityFrameworkCore.SqlServer**, lo hacemos de igual forma como instalamos el Entity Framework Core.
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-15.png)
 
-**5.** Ahora referenciemos la cadena de conexion dentro de los servicios de la aplicación, para ello modificaremos la clase **StartUp**
+5. Ahora referenciemos la cadena de conexion dentro de los servicios de la aplicación, para ello modificaremos la clase **StartUp**
 
 **a.** Importamos nuestro contexto y las librerias de Entity Framework Core y las correspondinetes a SQL Server, para ello incluimos las siguientes lineas:
 
@@ -271,6 +271,8 @@ Ahora vamos a cambiar nuestro proyecto para que al iniciar tome por defecto nues
 }
 ```
 
+3. Por ultimo elimine los archivos que hacen referencia al APi por defecto, en este caso **WeatherForecast.cs** y **WeatherForecastController.cs**.
+
 # Probemos que funciona
 Para validar que todo esta funcionando correctamente ejecutaremos el proyecto, presionando la tecla **F5** y validaremos el resultado.
 
@@ -283,6 +285,26 @@ Asi podemos ver la lista de todos los usuarios que tenemos en la tabla de nuestr
 De igual forma ahora podemos ejecutar todos las acciones utilizando nuestra API.
 
 # Adicionemos SWAGGER
-PAra facilitar el proceso de pruebas de todas las acciones, adicionaremos el servicio de Swagger a nuestra aplicación, de esta forma será mucho mas facil consumir nuestra API directamente. para ello ejecutaremos los siguientes pasos:
+Para facilitar el proceso de pruebas de todas las acciones, adicionaremos el servicio de Swagger a nuestra aplicación, de esta forma será mucho mas facil consumir nuestra API directamente. para ello ejecutaremos los siguientes pasos:
 
-1. 
+1. Adicionaremos el NuGet que nos permite adicionar los servicios de Swagger en este caso usaremos **Swashbuckle.AspNetCore**
+
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-22.png)
+
+2. Ahora configuraremos la aplicacion para consumir los servicios. para ello modificaremos nusetra clase **StartUp** adicionando el siguiente servicio a la función de **ConfigureServices** así:
+
+```csharp
+services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title="User API", Version = "v1"} ));
+```
+
+3. Ahora modificaremos la función **Configure** para adicionar el llamado a nuestro servicio, de la siguiente forma:
+
+```csharp
+// Enable middleware to serve generated Swagger as a JSON endpoint.
+app.UseSwagger();
+
+// Enable middleware to serve swagger-ui (HTML. JS, CSS, etc.),
+// specifying the Swagger JSON endpoint
+app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
+```
+
