@@ -11,7 +11,7 @@ Utilizando **Visual Studio 2019** vamos a crear la API para poder efectuar las a
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-02.png)
 
-**4.** Seleccione el tipo de proyecto, en este caso **Web Application**
+**4.** Seleccione el tipo de proyecto, en este caso **API**
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-03.png)
 
@@ -151,9 +151,9 @@ namespace WebDev.Api.Context
 # La cadena de conexión.
 Ahora pasaremos a establecer la cadena de conexión hacia la base de datos. Para ellos realizaremos los siguientes pasos:
 
-1. Seleccionamos el archivo **appsettins.json**
-2. Al final y siguiend las reglas de JSON, adicionamos uns nueva section llamada **ConnectionStrings**
-3. En esta nueva seccion creamos nuestra nueva cadena de conexión hacia la base de datos y la llamaremos **CnnStr**, en la cual referenciaremos los siguiente:
+**1.** Seleccionamos el archivo **appsettins.json**
+**2.** Al final y siguiend las reglas de JSON, adicionamos uns nueva section llamada **ConnectionStrings**
+**3.** En esta nueva seccion creamos nuestra nueva cadena de conexión hacia la base de datos y la llamaremos **CnnStr**, en la cual referenciaremos los siguiente:
 - La fuente de los datos o nuestro servidor local: **localhost**
 - El catalogo inicial de datos o nombre de nuestra base de datos: **UsersDB**
 - El usuario de base de datos: **Admin**
@@ -178,6 +178,7 @@ Al final tenemos algo como lo siguiente:
 }
 ```
 
+**4.** Ahora referenciemos la cadena de conexion dentro de los servicios de la aplicación, para ello modificaremos la clase **StartUp**
 
 
  
