@@ -81,7 +81,7 @@ Ahora adicionemos el contexto que es la representacion de lo que podria ser la b
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-10.png)
 
-**b.** En el administrador seleccionamos la opcion **Browse** y en la barra de busqueda escribimos **Entity Framework Core**. en los resultados de la busqueda seleccionamos la opción correspondiente en el panel derecho presionamos el botón de **install**. 
+**b.** En el administrador seleccionamos la opcion **Browse** y en la barra de busqueda escribimos **Entity Framework Core (EF)**. en los resultados de la busqueda seleccionamos la opción correspondiente en el panel derecho presionamos el botón de **install**. 
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-11.png)
 
@@ -99,5 +99,5 @@ Ahora adicionemos el contexto que es la representacion de lo que podria ser la b
 
 **5.** Ahora procedemos a complementar la clase **AppDbContext** de la siguiente manera:
 
-
+- Le adicionamos un constructor para que pueda ser instanciado por el EF.
 
