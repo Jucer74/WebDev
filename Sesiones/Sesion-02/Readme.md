@@ -99,5 +99,86 @@ Ahora adicionemos el contexto que es la representacion de lo que podria ser la b
 
 **5.** Ahora procedemos a complementar la clase **AppDbContext** de la siguiente manera:
 
-- Le adicionamos un constructor para que pueda ser instanciado por el EF.
+- Adicionamos la referencia Entity Framework Core
+	
+```csharp
+using Microsoft.EntityFrameworkCore;`
+```
+- Ponemos a nuetra clase a heredar de **DbContext**.
+- Le adicionamos un constructor para que pueda ser instanciado por el **EF**.
+- Adicionamos otro constructor que permita utilizar las opciones del **EF**, para poder instanciar los objetos en el contexto.
+
+```csharp
+public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+{
+}
+```
+- Referenciamos a los Objetos de nuestro modelo.
+
+```csharp
+using WebDev.Api.Model;
+```
+- Ahora adicionamos el objeto que hace referencia a nuestra tabla de usuarios.
+
+```csharp
+public DbSet<User> Users { get; set; }
+```
+Debe tener presente que dentro del DbSet va la clase del Modelo y despues el Nombre de la tabla exactamente como se llama en la base de datos.
+
+Al final tenemos algo como esto:
+
+```csharp
+namespace WebDev.Api.Context
+{
+  using Microsoft.EntityFrameworkCore;
+  using WebDev.Api.Model;
+
+  public class AppDbContext : DbContext
+  {
+    public AppDbContext()
+    {
+    }
+
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+
+    public DbSet<User> Users { get; set; }
+  }
+}
+```
+
+# La cadena de conexión.
+Ahora pasaremos a establecer la cadena de conexión hacia la base de datos. Para ellos realizaremos los siguientes pasos:
+
+1. Seleccionamos el archivo **appsettins.json**
+2. Al final y siguiend las reglas de JSON, adicionamos uns nueva section llamada **ConnectionStrings**
+3. En esta nueva seccion creamos nuestra nueva cadena de conexión hacia la base de datos y la llamaremos **CnnStr**, en la cual referenciaremos los siguiente:
+- La fuente de los datos o nuestro servidor local: **localhost**
+- El catalogo inicial de datos o nombre de nuestra base de datos: **UsersDB**
+- El usuario de base de datos: **Admin**
+- El password del usuario: **Admin123**
+- Adicionamos la opción de multiple concurrencia: **MultipleActiveResultSets=true** 
+
+Al final tenemos algo como lo siguiente:
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+   "AllowedHosts": "*",
+   "ConnectionStrings": {
+      "CnnStr":  "data source=localhost; initial catalog=UsersDB; User Id= Admin; Password= Admin123; MultipleActiveResultSets=true"
+   }
+}
+```
+
+
+
+ 
 
