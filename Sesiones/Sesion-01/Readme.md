@@ -17,7 +17,7 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 ![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-04.png)
 
-	Id			:	int				Not Null
+	Id		:	int				Not Null
 	Email		:	Varchar(255)	Not Null
 	Name		:	Varchar(255)	Not Null
 	Password	:	Varchar(255)	Not Null
@@ -59,7 +59,7 @@ Vamos a crear un usuario administrador para poder aceder a la base de datos desd
 
 ![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-08.png)
 
-**2.** En la Sección de **General ** llena los campos así:
+**2.** En la Sección de **General** llena los campos así:
 
 - **Login Name:** Admin
 - Select **SQL Server Autentication**
@@ -83,3 +83,27 @@ Vamos a crear un usuario administrador para poder aceder a la base de datos desd
 
 **4.** Presiona el botón de **OK** para confirmar los cambios.
 
+# Validar Autenticación Mixta
+MS SQL Server por defecto permite tener doble autenticación, per debe ser activada, para ello valide los siguientes pasos:
+
+1. Seleccionando el servidor de base de datos haga click derecho y en el menú flotante escoja **Propiedades**
+
+![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-11.png)
+
+2. En la sección de Security cambie la opción de Server Autenticatión a SQL Server and Windows Authentication mode.
+
+![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-12.png)
+
+Esta acción pide reinicio del servicio del SQL Server.
+
+3. Reinicie el servicio de SQL Server, haciendo click derecho nuevamente sobre el nodo del servidor y seleccione la opción **Restart**
+
+![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-13.png)
+
+
+4. Por último acepte el reinicio y verifique de nuevo el acceso con el usuario **Admin**.
+
+![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-14.png)
+
+
+  
