@@ -53,3 +53,10 @@ Veremos los principios básicos de desarrollo Fron-End y su interacción y uso d
 - TSLint
 - Prettier
 - vscode-icons
+
+# Notas
+En caso de no poder hacer cambios sobre el sistema operativo pueden descargar esta maquina virtual y sobre ella instalar lo que falta.
+
+[Download a virtual machine](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)
+
+Esta máquina ya tiene instalado Visual studio 2019 y Visual Studio Code, las demás herramientas deben ser instaladas sobre la maquina virtual.
