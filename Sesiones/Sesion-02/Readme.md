@@ -32,7 +32,7 @@ Ahora vamos a pasar a referencia el Modelo, que es la representación de la tabl
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-05.png)
 
-**3.** Cambio el nombre de la clase a **User**, eneste cas en singular ya que va a hacer referencia a un elemento de la tabla de Users a la vez.
+**3.** Cambio el nombre de la clase a **User**, en este caso en singular ya que va a hacer referencia a un elemento de la tabla de Users a la vez.
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-06.png)
 
