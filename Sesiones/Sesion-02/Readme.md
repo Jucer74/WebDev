@@ -405,3 +405,6 @@ Si quiere mantener la ejecución del swager al momento de ejecutar la aplicació
 ```
 
 Con este cambio cada vez que se ejecute la aplicacion utilizando IIS Express llamada automaticamente la pagina de Swagger y no el controlador directamente.
+
+
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-23.png)
