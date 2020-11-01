@@ -32,6 +32,7 @@ Veremos los principios básicos de desarrollo Fron-End y su interacción y uso d
 - [Asp.net core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [PostMan](https://www.postman.com/downloads/)
+- [Node Js](https://nodejs.org/en/download/)
 
 ## Extensiones
 
