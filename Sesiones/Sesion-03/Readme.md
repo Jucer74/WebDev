@@ -65,11 +65,75 @@ En la página de Bootstrap obtenemos los links para cada uno de los componentes 
 ### JS / Bundle
 ```html
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 ```
  
 ### Referenciar Bootstrap
 En la pagina HTML incluimos estos enlaces de la siguiente forma:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <!-- Js / Bundle -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <title>Bootstrap-Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+```
 
+Ahora vamos a crear nuestro formulario para poder obtener los datos necesarios para guardar los datos de los usuarios.
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <!-- Js / Bundle -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <title>Bootstrap-Document</title>
+</head>
+<body>
+  <!-- Form -->    
+  <div class="container">
+    <form id="frmUser">
+      <div class="form-group">
+        <label id="lblEmail" for="email">Email:</label>
+        <input type="email" id="txtEmail" name="email" placeholder="username@domain.com" required class="form-control">
+
+        <label id="lblName" for="name">Name:</label>
+        <input type="text" id="txtName" name="name" placeholder="Julio Robles" required class="form-control">
+
+        <label id="lblUsername" for="username">Username:</label>
+        <input type="text" id="txtUsername" name="username" placeholder="username" required class="form-control">
+
+        <label id="lblPassword" for="password">Password:</label>
+        <input type="password" id="txtPassword" name="password" required class="form-control">
+
+        <label id="lblConfirmPassword" for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="txtConfirmPassword" name="confirmPassword" required class="form-control">
+
+      </div>
+      <a href="#" class="btn btn-outline-success">Aceptar</a>
+    </form>
+  </div>
+</body>
+</html>
+```
+
+De esta forma tenemos nuestro formulario Inicial para capturar los datos que vamos a trabajar.
+
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-05.png)
+
+En este directorio vamos a encontrar unos ejemplos de cada uno de los elementos que pueden ser utilizados con Bootstrap para que aprendamos a utilizarlos.
