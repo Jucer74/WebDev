@@ -60,34 +60,116 @@ namespace WebDev.Application.Models
   }
 }
 ```
- 
-9. Cree u nuevo folder llamado **User** y adicione una nueva vista, haciendo click derecho sobre este folder.
+
+9. Adicione un nuevo controlador haciendo click derecho sobre el folder de **Controllers**
 
 ![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-09.png)
 
-10. Seleccionamos el tipo **Razor View**
+10. Seleccione la plantilla **MVC Controller with read/write actions**
 
 ![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-10.png)
 
-11. Complete los datos:
+11. Asigne el nombre **UsersController.cs** a la nueva clase que se genera.
+
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-11.png)
+
+12. Adicione el llamado al nuevo controlador modificando la clase **Startup**, adicionando un nuevo **EndPoint** con las siguientes lineas en la function **Configure**.
+
+```csharp
+// Users
+endpoints.MapControllerRoute(
+  name: "Users",
+  pattern: "{controller=Users}/{action=Index}/{id?}");
+```
+De esta forma se establece que la accion inicial para el controlador de **Users** es **Index**.
+
+Así nos queda el la funcion **Configure**. 
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+  if (env.IsDevelopment())
+  {
+    app.UseDeveloperExceptionPage();
+  }
+  else
+  {
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+  }
+  app.UseHttpsRedirection();
+  app.UseStaticFiles();
+
+  app.UseRouting();
+
+  app.UseAuthorization();
+
+  app.UseEndpoints(endpoints =>
+  {
+    endpoints.MapControllerRoute(
+      name: "default",
+      pattern: "{controller=Home}/{action=Index}/{id?}");
+	// Users
+    endpoints.MapControllerRoute(
+      name: "Users",
+      pattern: "{controller=Users}/{action=Index}/{id?}");
+  });
+}
+```
+
+13. Volvemos al controlador y hacemos click derecho sobre Action **Index** para que adicionemos la vista correspondiente, seleccionando la opcion **Add View...**
+
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-12.png)
+
+14. Seleccionamos el tipo **Razor View**
+
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-13.png)
+
+15. Complete los datos:
 	- **View name:** UserListView
 	- **Template:** List
 	- **Model class:** User (WebDev.Application.Models)  
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-11.png)
-
-12. Adicione un nuevo controlador haciendo click derecho sobre el folder de **Controllers**
-
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-12.png)
-
-13. Seleccione la plantilla **MVC Controller with read/write actions**
-
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-13.png)
-
-14. Asigne el nombre **UsersController.cs** a la nueva clase que se genera.
-
 ![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-14.png)
 
+Esta accion adiciona un nuevo folder llamado **Users** dentro del nodo de **Views** e internamente se crea la vista definida **UserListView.cshtml**.
+
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-15.png)
+
+16. Volvemos al Controlador y vamos a simular la respuesta para validar nuestra ejecución, así:
+
+a. Adiciones los las librerias para manejo de lista y para el uso del modelo
+
+```csharp
+using System.Collections.Generic;
+using WebDev.Application.Models;
+```
+
+b. Modifique la acción **Index** estableciendo el tipo de metodo a **HttpGet**,  tambien simule la respuesta adicionando una lista de Users y establezca la vista y asigne el objeto del modelo a la vista, así: 
+
+```csharp
+// GET: UsersController
+[HttpGet]
+public ActionResult Index()
+{
+  // Mock User List Response
+  List<User> userList = new List<User>()
+  {
+    new User{Id=1, Email="Julio.Robles@email.com", Name="Julio Robles", Username="jrobles", Password="Password"},
+    new User{Id=2, Email="Pilar.Lopez@email.com", Name="Pilar Lopez", Username="plopez", Password="Password"},
+    new User{Id=3, Email="Felipe.Daza@email.com", Name="Felipe Daza", Username="fdaza", Password="Password"},
+  };
+
+  // Set the View and the Object Model
+  return View("UserListView", userList);
+}
+```
+
+Ejecute laaplicación presionando F5 y valide los resultados.
+
+
+
+En este punto podemos aplicar los cambios aprendidos en la sesión anterior y dejar nuestra vista
 
 
 

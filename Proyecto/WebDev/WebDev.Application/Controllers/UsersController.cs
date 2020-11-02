@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using WebDev.Application.Models;
 
 namespace WebDev.Application.Controllers
 {
@@ -9,7 +11,16 @@ namespace WebDev.Application.Controllers
     [HttpGet]
     public ActionResult Index()
     {
-      return View();
+      // Mock User List Response
+      List<User> userList = new List<User>()
+      {
+        new User{Id=1, Email="Julio.Robles@email.com", Name="Julio Robles", Username="jrobles", Password="Password"},
+        new User{Id=2, Email="Pilar.Lopez@email.com", Name="Pilar Lopez", Username="plopez", Password="Password"},
+        new User{Id=3, Email="Felipe.Daza@email.com", Name="Felipe Daza", Username="fdaza", Password="Password"},
+      };
+
+      // Set the View and the Object Model
+      return View("UserListView", userList);
     }
 
     // GET: UsersController/Details/5

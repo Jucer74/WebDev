@@ -32,7 +32,7 @@ Ahora iniciamos **Visual Studio Code** y abrimos ese folder como nuestro diector
 
 ![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-02.png)
 
-Seleccionamos nuevo archivo y le asignamos el nombre **Index.html**
+Seleccionamos nuevo archivo y le asignamos el nombre **Details.html**
 
 ![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-03.png)
 

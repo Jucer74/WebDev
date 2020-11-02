@@ -51,6 +51,7 @@ namespace WebDev.Application
         endpoints.MapControllerRoute(
           name: "default",
           pattern: "{controller=Home}/{action=Index}/{id?}");
+        // Users
         endpoints.MapControllerRoute(
           name: "Users",
           pattern: "{controller=Users}/{action=Index}/{id?}");
