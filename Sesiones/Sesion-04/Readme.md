@@ -164,12 +164,13 @@ public ActionResult Index()
   return View("UserListView", userList);
 }
 ```
+c. Ejecute la aplicación presionando **F5** y valide los resultados, redireccionando la ruta a **/Users**.
 
-Ejecute laaplicación presionando F5 y valide los resultados.
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-16.png)
+
+En este punto podemos aplicar los cambios aprendidos en la sesión anterior y mejorar nuestra vista.
 
 
-
-En este punto podemos aplicar los cambios aprendidos en la sesión anterior y dejar nuestra vista
 
 
 

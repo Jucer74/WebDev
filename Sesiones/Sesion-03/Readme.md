@@ -107,6 +107,7 @@ Ahora vamos a crear nuestro formulario para poder obtener los datos necesarios p
 <body>
   <!-- Form -->    
   <div class="container">
+    <h1>User Details</h1>
     <form id="frmUser">
       <div class="form-group">
         <label id="lblEmail" for="email">Email:</label>
@@ -126,6 +127,7 @@ Ahora vamos a crear nuestro formulario para poder obtener los datos necesarios p
 
       </div>
       <a href="#" class="btn btn-outline-success">Aceptar</a>
+      <a href="#" class="btn btn-outline-secondary">Cancelar</a>
     </form>
   </div>
 </body>
@@ -136,4 +138,99 @@ De esta forma tenemos nuestro formulario Inicial para capturar los datos que vam
 
 ![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-05.png)
 
+## La lista de Usuarios
+Ahora vamos a adicionar la lista de usuarios, para ello adicionamos un nuevo archivo llamado **Index.html**
+
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-06.png)
+
+Editamos nuestro archivo y adicionamos una tabla para listar los usuarios de la siguientes forma:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <!-- JS / Bundle -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <!-- Font Awesome / Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <title>Bootstrap-Document</title>
+</head>
+<body>
+  <div class="container">
+    <h1>User List </h1>
+    <p> 
+      <a href="#" class="btn btn-success"><i class="fas fa-plus"></i> New</a>
+    </p>
+  </div>
+  <!-- Table -->
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <!-- Actions -->
+            <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>1</td>
+            <td>Julio.Robles@email.com</td>
+            <td>Julio Robles</td>
+            <td>jrobles</td>
+            <td>Password</td>
+            <td>
+              <a href="#" class="btn btn-outline-primary">Edit</a>
+              <a href="#" class="btn btn-outline-warning">Details</a>
+              <a href="#" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Pilar.Lopez@email.com</td>
+          <td>Pilar Lopez</td>
+          <td>plopez</td>
+          <td>Password</td>
+          <td>
+            <a href="#" class="btn btn-outline-primary">Edit</a>
+            <a href="#" class="btn btn-outline-warning">Details</a>
+            <a href="#" class="btn btn-outline-danger">Delete</a>
+          </td>
+      </tr>
+      
+      <tr>
+        <td>3</td>
+        <td>Felipe.Daza@email.com</td>
+        <td>Felipe Daza</td>
+        <td>fdaza</td>
+        <td>Password</td>
+        <td>
+          <a href="#" class="btn btn-outline-primary btn-sm">Edit</a>
+          <a href="#" class="btn btn-outline-warning btn-sm">Details</a>
+          <a href="#" class="btn btn-outline-danger btn-sm">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</body>
+</html>
+```
+
+Acá podemos ver el resultado
+
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-07.png)
+
+
+## Ejemplos
 En este directorio vamos a encontrar unos ejemplos de cada uno de los elementos que pueden ser utilizados con Bootstrap para que aprendamos a utilizarlos.
