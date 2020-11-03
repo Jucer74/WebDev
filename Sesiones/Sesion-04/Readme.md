@@ -601,4 +601,6 @@ Vuelva a ejecutar el proyecto y valide los cambios.
 
 Note que ahora tiene varias nuevas funcionalidades, paginación automática, cantidad de registros, ordenamiento por cualquier columna y busqueda rapida sobre los registros.  
 
+En nuestra siguiente sesion eremos como realizar el llamado a una libreria de servicios que nos ofrecera la posibilidad de conectarnos con la API y así traer los datos directamente desde la base de datos.
+
 
