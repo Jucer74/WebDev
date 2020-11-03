@@ -90,7 +90,7 @@ endpoints.MapControllerRoute(
 ```
 De esta forma se establece que la accion inicial para el controlador de **Users** es **Index**.
 
-Así nos queda el la funcion **Configure**. 
+Así nos queda la funcion **Configure**. 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
@@ -272,7 +272,7 @@ En este punto podemos aplicar los cambios aprendidos en la sesión anterior y me
 ## Las otras Acciones
 Ahora vamos a implementar la demas acciones para completar el CRUD. Iniciaremos por la opción de **Create New**.
 
-En el controlador y sobre cada uno de los metodos, presione click derecho y escoja la opción **Add View...**, esto le dara como resultado que se agregaran las vistas por cada acción. Tenga presente el seleccionar siempre el Template correspondiente a la Acción que esta creando, es decir, si esta adicionando la Vista para **Details**, el template seleccionado debe ser el de **Details** y asi para todos los casos, ademas, debe estar seguro siempre de seleccionar el mismo modleo de **User** y no otro porque se pueden generar errores. En caso de que esto ultimo suceda, lo que debe hacer es borrar el archivo resultante de la carpeta de **Views** y volver a generar. Al finalizar usted tendra algo como lo siguiente, en la carpeta de **Views**. 
+En el controlador y sobre cada uno de los metodos, presione click derecho y escoja la opción **Add View...**, esto le dara como resultado que se agregaran las vistas por cada acción. Tenga presente el seleccionar siempre el Template correspondiente a la Acción que esta creando, es decir, si esta adicionando la Vista para **Details**, el template seleccionado debe ser el de **Details** y asi para todos los casos, ademas, debe estar seguro siempre de seleccionar el mismo modelo de **User** y no otro porque se pueden generar errores. En caso de que esto ultimo suceda, lo que debe hacer es borrar el archivo resultante de la carpeta de **Views** y volver a generar. Al finalizar usted tendra algo como lo siguiente, en la carpeta de **Views**. 
 
 ![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-18.png)
 
@@ -601,6 +601,6 @@ Vuelva a ejecutar el proyecto y valide los cambios.
 
 Note que ahora tiene varias nuevas funcionalidades, paginación automática, cantidad de registros, ordenamiento por cualquier columna y busqueda rapida sobre los registros.  
 
-En nuestra siguiente sesion eremos como realizar el llamado a una libreria de servicios que nos ofrecera la posibilidad de conectarnos con la API y así traer los datos directamente desde la base de datos.
+En nuestra siguiente sesion veremos como realizar el llamado a una libreria de servicios que nos ofrecera la posibilidad de conectarnos con la API y así traer los datos directamente desde la base de datos.
 
 
