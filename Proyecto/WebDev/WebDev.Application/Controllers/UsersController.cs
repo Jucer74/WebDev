@@ -1,26 +1,38 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using WebDev.Application.Models;
-
-namespace WebDev.Application.Controllers
+﻿namespace WebDev.Application.Controllers
 {
+  using System.Collections.Generic;
+  using System.Linq;
+  using Microsoft.AspNetCore.Mvc;
+  using Microsoft.Extensions.Options;
+  using Models;
+
   public class UsersController : Controller
   {
     private static List<User> _userList;
     private static int numUsers;
+    private readonly IOptions<ApiConfiguration> _apiConfiguration;
 
-    public UsersController()
+    public UsersController(IOptions<ApiConfiguration> apiConfiguration)
     {
+      _apiConfiguration = apiConfiguration;
+
       // Mock User List
       if (_userList is null)
       {
-        _userList = new List<User>()
+        _userList = new List<User>
         {
-          new User{Id=1, Email="Julio.Robles@email.com", Name="Julio Robles", Username="jrobles", Password="Password"},
-          new User{Id=2, Email="Pilar.Lopez@email.com", Name="Pilar Lopez", Username="plopez", Password="Password"},
-          new User{Id=3, Email="Felipe.Daza@email.com", Name="Felipe Daza", Username="fdaza", Password="Password"},
+          new User
+          {
+            Id = 1, Email = "Julio.Robles@email.com", Name = "Julio Robles", Username = "jrobles", Password = "Password"
+          },
+          new User
+          {
+            Id = 2, Email = "Pilar.Lopez@email.com", Name = "Pilar Lopez", Username = "plopez", Password = "Password"
+          },
+          new User
+          {
+            Id = 3, Email = "Felipe.Daza@email.com", Name = "Felipe Daza", Username = "fdaza", Password = "Password"
+          }
         };
         numUsers = _userList.Count;
       }
@@ -31,6 +43,8 @@ namespace WebDev.Application.Controllers
     [HttpGet]
     public ActionResult Index()
     {
+      var apiUrl = _apiConfiguration.Value.Url;
+
       // Set Object Model
       return View(_userList);
     }
@@ -108,6 +122,7 @@ namespace WebDev.Application.Controllers
 
           return RedirectToAction(nameof(Index));
         }
+
         return View(user);
       }
       catch

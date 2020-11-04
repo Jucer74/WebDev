@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 
 namespace WebDev.Application
 {
+  using Models;
+
   public class Startup
   {
     public Startup(IConfiguration configuration)
@@ -19,6 +21,7 @@ namespace WebDev.Application
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddControllersWithViews();
+      services.Configure<ApiConfiguration>(Configuration.GetSection("ApiConfiguration"));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
