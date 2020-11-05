@@ -1,6 +1,6 @@
 # WebDev
-Curso de Desarollo Web, conceptos Básicos-
-Veremos los principios básicos de desarrollo Fron-End y su interacción y uso de herramientas y servicios de Back-End
+Curso de Desarollo Web, (Conceptos Básicos)
+Veremos los principios básicos de desarrollo Fron-End y su interacción, así como el uso de herramientas y servicios de Back-End
 
 ## Temas
 - Introducción
