@@ -548,7 +548,15 @@ public ActionResult Delete(User user)
 - Se cambia el tipo de parametro del Metodo delete final por **User user**
 - Se realizan las validaciones correspondientes al flujo de la aplicación
 
-2. a nivel de la vista **NO** se realizan cambios.
+2. a nivel de la vista 
+
+Cambie los botones de la siguiente forma
+```html
+<form asp-action="Delete">
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
+</form>
+```
 
 En este momento podemos podemos ejecutar de nuevo la aplicación y validar las accones. Recuerde que estos cambios estan trabajando con datos simulados, ya que en la proxima sesión veremos como realizar el llamado a la API para intereactuar con ella y los ddatos de la base de datos directamente.
 
