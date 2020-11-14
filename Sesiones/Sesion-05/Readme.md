@@ -582,14 +582,14 @@ esta es la URL que necesitamos para nuestro archivo de **AppSetting.json**
 ## Problemas de Certificados
 Si se llega a presentar un error con algo relacionado con el manejo de certificados o conexion SSL, realice los siguientes ajustes a nivel de la clase **UsersService**.
 
-1. Adicone la siguiente variable a la clase.
+1. Adiicone la siguiente variable a la clase.
 ```csharp
 private HttpClientHandler _httpClientHandler;
 ```
 2. A nivel del constructor de la clase cambie la siguiente asignacion:
 
 ```csharp
-_httpClient = new HttpClient(_httpClientHandler);
+_httpClient = new HttpClient();
 ```
 por estas lineas
 ```csharp
