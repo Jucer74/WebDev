@@ -409,3 +409,15 @@ Con este cambio cada vez que se ejecute la aplicacion utilizando IIS Express lla
 
 
 ![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-23.png)
+
+
+### Autenticación Integrada con Windows
+En caso de presentar problemas con el manejo del usuario se puede cambiar la cadena de conexión a la base de datos para que maneje autenticacion integrada con windows, para ello cambie la cadena de conexión por lo siguiente:
+
+```json
+"ConnectionStrings": {
+      "CnnStr":  "data source=localhost; initial catalog=UsersDB; Integrated Security=True; MultipleActiveResultSets=true"
+   }
+```
+De esta forma omitimos el paso del usuario de la base de datos y trabajamos con nuestro propio usuario del sistema operativo, que es el mismo que inicia el servicio de SQL Server.
+
