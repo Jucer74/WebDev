@@ -51,5 +51,5 @@ Veremos los principios básicos de desarrollo Fron-End y su interacción y uso d
 - npm
 - path intellisense
 - TSLint
-- Pretier
+- Prettier
 - vscode-icons
