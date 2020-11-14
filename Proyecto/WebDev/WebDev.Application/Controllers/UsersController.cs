@@ -1,10 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using WebDev.Application.Models;
 
 namespace WebDev.Application.Controllers
@@ -28,8 +24,6 @@ namespace WebDev.Application.Controllers
         numUsers = _userList.Count;
       }
     }
-
-
 
     // GET: UsersController
     [HttpGet]
