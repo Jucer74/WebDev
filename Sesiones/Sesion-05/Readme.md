@@ -18,7 +18,8 @@ Asegurse de que sea **.Net Core** para evitar incompatibilidades-
 
 ![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-04.png)
 
+4. Cambie el Nombre del archivo Class1,cs a **ServiceManager.cs**, haciendo click derecho sobre el archivo y selecioanndo renombrar (Rename)
 
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-04.png)
 
-
- 
+5.  
