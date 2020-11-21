@@ -155,7 +155,7 @@ private async Task<bool> IsValidUser(string email, string password)
 @model WebDev.Application.Models.Login
 
 @{
-    if (ViewBag.Logged == true)
+    if (ViewData["IsUserLogged"] == "true")
     {
         <div class="text-right">
             <ul class="navbar-nav flex-grow-1 text-right">
@@ -163,7 +163,7 @@ private async Task<bool> IsValidUser(string email, string password)
                     <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark">@Html.DisplayFor(model => model.Email)</a>
+                    <a class="nav-link text-dark">@ViewData["User"]</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-controller="Home" asp-action="Logout">Logout</a>
