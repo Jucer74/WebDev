@@ -53,7 +53,7 @@ namespace WebDev.Application.Controllers
           // Llamar a la API para validar el Login
           if (await IsValidUser(login.Email, login.Password))
           {
-            return RedirectToAction(nameof(Index));
+            return Redirect(nameof(Index));
           }
           ModelState.AddModelError(string.Empty, "Intento de inicio de sesión no válido.");
         }
