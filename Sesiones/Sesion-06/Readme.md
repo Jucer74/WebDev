@@ -145,9 +145,9 @@ private async Task<bool> IsValidUser(string email, string password)
 
 ![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06/Security-03.png)
 
-	- **View name:** _Loginpartial
-	- **Template:** Create
-	- [x] **Create as a partial view** Checked
+**View name:** _Loginpartial
+**Template:** Create
+[x] **Create as a partial view** Checked
 
 8. Actualizamos el contenido con lo siguiente:
 
@@ -250,7 +250,7 @@ Con esto controlamos el Acceso a la aplicación  a la opción de usuarios.
 
 - Adicione el siguiente nuget. (recuerde que esta opción se ejecuta haciendo click derecho sobre el nodo de **Dependencies**)
 
-![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06/Security-03.png)
+![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06/Security-04.png)
 
 - Busque y adicione paquete de manejo de Sesiones (**Microsoft.AspNetCore.Session**)
 
