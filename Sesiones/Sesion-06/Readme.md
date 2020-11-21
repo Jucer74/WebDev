@@ -394,9 +394,7 @@ public IActionResult Logout()
 ```
 
 
-- En la vista parcial **_Login.cshtml**
-
-* Adicione la siguietne condicion al Inicio de la Vista:
+- En la vista parcial **_Login.cshtml** Adicione la siguiente condicion al Inicio de la Vista:
 
 ```csharp
   var isUserLogged = (ViewData["IsUserLogged"] != null) ? ViewData["IsUserLogged"].ToString() : "false";
