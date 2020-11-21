@@ -152,8 +152,6 @@ private async Task<bool> IsValidUser(string email, string password)
 8. Actualizamos el contenido con lo siguiente:
 
 ```html
-@model WebDev.Application.Models.Login
-
 @{
     if (ViewData["IsUserLogged"] == "true")
     {
