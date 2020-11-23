@@ -38,18 +38,46 @@ Puede consultar mas información sobre la creación de una aplicacion react enel
 
 En este punto puede cerrar el navegador para continuar.
 
-8. Ahora dentro de la consola de VS Code vamos ejecutar el siguiente comando: 
+8. Ahora dentro de la consola de VS Code vamos instalar los paquetes necesarios para nuestra applicación:
+ 
+Para los Estilos y los componentes
 
 ```
-npm i bootstrap react-bootstrap reactstrap axios
+npm install -save bootstrap 
+npm install -save react-bootstrap
 ```
 
-Con esto podemos instalar los paquetes necesarios para nuestra applicación:
+Para las Ventanas Modales
 
-- **Bootstrap**: Para el manejo de nuestros estilos y front de la aplicación.
-- **React-Bootstrap**: Para los componentes bootstrap dentro de React 
-- **Reactstrap**: Para el Uso de Ventanas Modales.
-- **Axios**: Para el llamado asincronico de nuestra **API**.
+``` 
+npm install -save reactstrap
+```
+ 
+Para el redireccionamiento del Menu
+```
+npm install -save react-router-dom
+
+```
+
+Para los llamados a la API
+``` 
+npm install -save axios
+```
+
+Para los Iconos usaremos Font Awesome
+
+```
+npm install -save @fortawesome/fontawesome-svg-core
+npm install -save @fortawesome/free-solid-svg-icons
+npm install -save @fortawesome/react-fontawesome
+```
+
+Para el manejo de las tablas usaremos Datatables
+
+```
+npm install -save datatables.net-dt
+npm install -save jquery
+```
 
 
 # Iniciemos el Proyecto
@@ -65,9 +93,13 @@ Esta definición de componentes las puede obtener en el sitio [react-Bootsrap](h
 ```js
 import React from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstap.min.css';
-
+import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Image, Navbar, Nav } from 'react-bootstrap';
 ```
 
+2. Modifique el contenido de la función **App** para incluir el menú de nuestra aplicación. para ello puede incluir la seccion **nav** desde el archivo **NavBar.html** que se encuentra en el directorio de **plantillas** de este repositorio o buscar el componente dentro de las librerias de react-bootstrap así:
 
-2.
+
+
+
