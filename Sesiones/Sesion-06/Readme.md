@@ -1,7 +1,5 @@
 # Login y Security
-En esta sesión veremos como implementar el login de nuestra aplicación y como manejar la autenticación usando JWT (Jason Web Token).
-
-Adicional veremos como realizar el cifrado o encripción del password para guardarlo y para recuperarlo.
+En esta sesión veremos como implementar el login de nuestra aplicación y como manejar la autenticación del usuario.
 
 ## Creemos el Login
 Lo primero que vamos a hacer es incluir el login en nustra apliacion y vamos a dejarlo prototipado para que funcione correctamente, sin hacer, a[un, llamado a la API que se necesitara para ello.
