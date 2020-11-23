@@ -13,9 +13,9 @@ En esta sesión veremos la implementación de nuestros formularios utilizando la
 npx create-react-app usermanagerapp 
 ```
 
-**NOTA: **Tenga presente ue esta operación puede tardar varios minutos.
+**NOTA: ** Tenga presente ue esta operación puede tardar varios minutos.
 
-4. Ingrsamos a la carpeta de nuestro proyecto y abrimos el proyecto en Visual Studio Code, para ellos podemos ejecutar el comando **Code .** en la sesión actual.
+4. Ingresamos a la carpeta de nuestro proyecto y abrimos el proyecto en Visual Studio Code, para ellos podemos ejecutar el comando **Code .** en la sesión actual.
 
 ```
 cd usermanagerapp
@@ -25,16 +25,20 @@ code .
 
 ![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-02.png)
 
-6. En esta nueva ventana ejecutamos el comando **npm start** para iniciar nuestra aplicación y si todo quedo funcionando corectamente usted podra ver una ventana con el logo de React, con una aplicación ejecutandose sobre **http://localhost:3000**.
+6. En esta nueva ventana ejecutamos el comando **npm start** para iniciar nuestra aplicación 
 
 ![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-03.png)
+
+7. si todo quedo funcionando corectamente usted podra ver una ventana con el logo de React, con una aplicación ejecutandose sobre **http://localhost:3000**.
+
+![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-04.png)
 
 **Nota:**
 Puede consultar mas información sobre la creación de una aplicacion react enel proyecto [create-react-app](https://github.com/facebook/create-react-app).
 
 En este punto puede cerrar el navegador para continuar.
 
-7. Ahora dentro de la consola de VS Code vamos ejecutar el siguiente comando: 
+8. Ahora dentro de la consola de VS Code vamos ejecutar el siguiente comando: 
 
 ```
 npm i bootstrap react-bootstrap reactstrap axios
