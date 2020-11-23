@@ -1,0 +1,14 @@
+server:
+  port: 9999
+
+logging:
+  level:
+    org.springframework.cloud.gateway: ERROR
+    org.springframework.http.server.reactive: ERROR
+    org.springframework.web.reactive: ERROR
+    reactor.ipc.netty: ERROR
+    reactor.netty: ERROR
+
+services:
+  users: http://localhost:8080
+  movies: http://localhost:5000

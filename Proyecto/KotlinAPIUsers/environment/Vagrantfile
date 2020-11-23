@@ -1,0 +1,57 @@
+# -*- mode: ruby -*-
+# vim: ft=ruby
+
+
+# ---- Configuration variables ----
+
+GUI               = false # Enable/Disable GUI
+RAM               = 500   # Default memory size in MB
+
+# Network configuration
+DOMAIN            = ".example.com"
+NETWORK           = "192.168.56."
+NETMASK           = "255.255.255.0"
+
+# Default Virtualbox .box
+# See: https://wiki.debian.org/Teams/Cloud/VagrantBaseBoxes
+BOX               = "generic/ubuntu1804"
+
+HOSTS = {
+  "kotlinUsersService" => [NETWORK+"119", RAM, GUI, BOX, "kotlin.sh"],
+  "kotlinMoviesService" => [NETWORK+"120", RAM, GUI, BOX, "kotlin.sh"],
+  "javaGatewayService" => [NETWORK+"121", RAM, GUI, BOX, "kotlin.sh"],
+#  "rabbitmqserver"   => [NETWORK+"115", RAM, GUI, BOX, "rabbitmq.sh"],
+#  "consumer" => [NETWORK+"116", RAM, GUI, BOX, "node.sh"],
+#  "producer" => [NETWORK+"117", RAM, GUI, BOX, "node.sh"],
+  "mysql" => [NETWORK+"118", RAM, GUI, BOX, "mysql.sh"]
+}
+
+# ---- Vagrant configuration ----
+
+Vagrant.configure(2) do |config|
+  HOSTS.each do | (name, cfg) |
+    ipaddr, ram, gui, box, provisioning_script = cfg
+
+    config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
+    config.vm.synced_folder "./examples", "/home/vagrant"
+
+    config.vm.define name do |machine|
+      machine.vm.box   = box
+      machine.vm.guest = :ubuntu
+      machine.vm.provision :shell, path: provisioning_script
+      machine.vm.boot_timeout = 300
+
+      machine.vm.provider "virtualbox" do |vbox|
+        vbox.gui    = gui
+        vbox.memory = ram
+        vbox.name = name
+      end
+
+      machine.vm.hostname = name + DOMAIN
+      machine.vm.network 'private_network', ip: ipaddr, netmask: NETMASK, name: 'vboxnet0', adapter:2
+    end
+
+  end # HOSTS-each
+
+end

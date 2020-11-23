@@ -1,0 +1,9 @@
+Flask
+flask-cors
+redis
+PyMySQL
+flask-mysql
+flask_sqlalchemy
+flask_marshmallow
+marshmallow-sqlalchemy
+flask-jwt-extended
