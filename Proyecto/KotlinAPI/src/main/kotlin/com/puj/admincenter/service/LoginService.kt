@@ -43,7 +43,8 @@ class LoginService(val userRepository: UserRepository) {
             println("tokenJwt: $jwtToken")
 
             val token =  TokenDto(jwtToken,
-                                  user.id)
+                                  user.id,
+                                  user.name)
             logger.info("Token $token for user $user generated")
             ResponseEntity<TokenDto>(token,
                                      HttpStatus.OK)

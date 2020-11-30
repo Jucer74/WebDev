@@ -28,13 +28,8 @@ class UserService(private val userRepository: UserRepository) {
         return userRepository.count()
     }
 
-    fun getAllUsers(): ResponseEntity<*> {
-        val user = userRepository.getAll()  
-        return if (user.isPresent()) {
-            ResponseEntity.ok(UserDto.convert(user.get()))
-        } else {
-            ResponseEntity<Any>(HttpStatus.NOT_FOUND)
-        }
+    fun getAllUsers(authorization: String): ResponseEntity<*> {
+        return ResponseEntity.ok(userRepository.findAll())
     }
 
     fun getById(userId: Int,

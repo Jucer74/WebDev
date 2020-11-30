@@ -5,14 +5,18 @@ import com.puj.admincenter.domain.users.User
 data class UserDto(
     val id: Int,
     val email: String,
-    var username: String
+    var name: String,
+    var username: String,
+    var password: String
 ) {
     companion object {
         fun convert(user: User): UserDto {
             val dto = UserDto(
                 id = user.id,
                 email = user.email,
-                username = user.username
+                name = user.name,
+                username = user.username,
+                password = user.password
             )
             return dto
         }

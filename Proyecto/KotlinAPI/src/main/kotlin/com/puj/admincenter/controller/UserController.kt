@@ -5,17 +5,14 @@ import com.puj.admincenter.dto.users.CreateUserDto
 import com.puj.admincenter.dto.users.UpdateUserDto
 import com.puj.admincenter.dto.users.UserDto
 import com.puj.admincenter.service.UserService
-
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.web.bind.annotation.*
-// import org.springframework.web.bind.annotation.GetMapping
-// import org.springframework.web.bind.annotation.PostMapping
-// import org.springframework.web.bind.annotation.PutMapping
-// import org.springframework.web.bind.annotation.DeleteMapping
-// import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.context.request.RequestContextHolder
 import org.springframework.web.context.request.ServletRequestAttributes
 import javax.validation.Valid
@@ -32,6 +29,13 @@ class UserController(private val userService: UserService) {
     companion object {
         val logger = LoggerFactory.getLogger(UserController::class.java)!!
     }
+
+    @GetMapping(
+        consumes = ["application/json"],
+        produces = ["application/json"]
+    )
+    fun getAllUsers(@RequestHeader(value="authorization", required=true) authorization: String): ResponseEntity<*>
+        = userService.getAllUsers(authorization)
 
     @GetMapping(
         value = ["/{userId}"],

@@ -20,7 +20,7 @@ interface UserRepository : JpaRepository<User, Int>,
         SELECT user
         FROM User user
     """)
-    fun getAll(): Array<User>
+    fun getAllUsers(): Array<User>
     
     @Query("""
         SELECT user
