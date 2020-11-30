@@ -355,8 +355,111 @@ Ahora ya podemos probrar cada una de las opciones del menú, y ver como nos camb
 # Consumiento datos de la API
 Ahora vamos a modificar la página de usuarios (**User.js**) para que podamos desplegar los datos de los usuarios.
 
-1. 
+1. Adicione lso siguientes componetes y librerias
 
+```js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Button, Container, Table } from 'react-bootstrap';
+import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+```
+
+- Adicionamos los componentes de **useState** y **useEffect**, par amanejar los estados y resultados de los llamados a la API.
+- De igual manera adicionamos la libreria de **axios** para facilitar el llamado de la API directametne
+- Por ultimo adiciomos las librerias de Botones y manejo de iconos para construir el diseño de nuestros datos
+
+2. Modificamos el componente para convertirlo en una funcion que retorna nuestros datos así:
+
+```js
+export function List()
+{
+  const baseUrl = "https://localhost:5001/api/Users";
+
+  const [ data, setData]=useState([]);  
+
+  const GetUsers=async()=>{
+    await axios.get(baseUrl)
+    .then (response=>{
+      setData(response.data);
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+
+  useEffect(()=>{
+    GetUsers();
+  },[]);
+
+return (
+  <Container className="text-center text-md-left">
+    <h1>User List</h1>
+    <p>
+      <Button className="left" variant="success btn-sm"> <Fas icon={faPlus} /> New</Button>
+    </p>
+    <Table striped bordered hover>
+      <thead>
+          <tr>
+              <th>Id</th>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
+      <tbody>
+        {data.map(usr=>(
+          <tr>
+            <td>{usr.id}</td>
+            <td>{usr.email}</td>
+            <td>{usr.name}</td>
+            <td>{usr.username}</td>
+            <td>{usr.password}</td>
+            <td>
+              <Button variant="outline-primary btn-sm">Edit</Button> 
+              <Button variant="outline-warning btn-sm">Details</Button> 
+              <Button variant="outline-danger btn-sm">Delete</Button> 
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  </Container>
+);
+}
+```
+
+- Definimos **baseUrl** como nuestra url base, en donde se consumen los datos de nuestra API, esta direccion puede acmbiar dependiendo de en donde esta situada nuetra API.
+- Definimos nuestra Variable **data** par asignar los valores retornados por la API y podemos manejar directamtne en nuestro componente
+- Creamos una funcion asincronica que consume y retorna los datos de la API para almacenarlos dentro de nustra variable local.
+- Por ultimo hacemos el llamado a nuestra funcion y se asignan los valores directamente.
+- Vemos que la funcion se llama **List** y retorna el componente que arma la tabla de resultados con este llamado procedemos ahora a modificar la invocacion de esta nueva funcion dentro del componente principal (**App.js**)
+
+```js
+<Route path="/Users" component={List} />
+```
+- Nos aeguramos que nuestra API se encuentre funcionando y efectuamos el lamado a nuestro servicio.
 
 
 ## Habilitando CORS
+Si el API que esta utlizando para probrar este ejemplo, es la API de la session dos (2), debe actualizarla para habiliar el uso de CORS de la siguiente forma:
+
+1. En la clase StartUp en la funcion **ConfigureServices** adicione el uso de CORS
+
+```csharp
+services.AddCors();
+```
+
+2. En la función **Configure** adicione la configuracon de los CORS asi:
+
+```csharp
+app.UseCors(options => {
+  options.WithOrigins("http://localhost:3000");
+  options.AllowAnyMethod();
+  options.AllowAnyHeader();
+});
+      
+```
+
+Tenga presente que la url hace referencia al sitio web desde donde se consume la API.
