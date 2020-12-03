@@ -1,7 +1,7 @@
 USE [UsersDB]
 GO
 
-/****** Object:  Table [dbo].[Users]    Script Date: 10/24/2020 12:21:41 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 12/2/2020 10:30:52 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,7 +13,11 @@ CREATE TABLE [dbo].[Users](
 	[Email] [varchar](255) NOT NULL,
 	[Name] [varchar](50) NOT NULL,
 	[Password] [varchar](50) NOT NULL,
-	[Username] [varchar](50) NOT NULL
+	[Username] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
