@@ -19,9 +19,9 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 	Id		:	int				Not Null
 	Email		:	Varchar(255)	Not Null
-	Name		:	Varchar(255)	Not Null
-	Password	:	Varchar(255)	Not Null
-	Username	:	Varchar(255)	Not Null
+	Name		:	Varchar(50)	Not Null
+	Password	:	Varchar(50)	Not Null
+	Username	:	Varchar(50)	Not Null
  
 **6.** Seleccione el campo **Id** y en las propiedades escoja la propiedad **Identity Especification** y en el campo **(IsIdentity)** escoja la opción **True**.
 
