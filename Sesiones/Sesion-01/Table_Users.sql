@@ -1,4 +1,4 @@
-USE [UserDB]
+USE [UsersDB]
 GO
 
 /****** Object:  Table [dbo].[Users]    Script Date: 10/24/2020 12:21:41 AM ******/
