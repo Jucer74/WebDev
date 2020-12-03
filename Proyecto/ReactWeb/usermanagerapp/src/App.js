@@ -9,7 +9,6 @@ import { Login } from './components/Login';
 import { List } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
 
-
 function App() {
   return (
     <div className="App">

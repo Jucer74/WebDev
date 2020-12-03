@@ -363,10 +363,6 @@ import axios from 'axios';
 import { Button, Container, Table } from 'react-bootstrap';
 import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import 'jquery/dist/jquery.min.js';
-import 'datatables.net-dt/js/dataTables.dataTables';
-import 'datatables.net-dt/css/jquery.dataTables.min.css';
-import $ from 'jquery'; 
 ```
 
 - Adicionamos los componentes de **useState** y **useEffect**, par amanejar los estados y resultados de los llamados a la API.
@@ -472,3 +468,14 @@ app.UseCors(options => {
 ```
 
 Tenga presente que la url hace referencia al sitio web desde donde se consume la API.
+
+# Creación de Usuarios
+1. Adicione a las librerias actuales el llamado a los componentes Modales de la libreria **reactstrap** así:
+
+```js
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+```
+
+2. Cree la función **CreateUser** para mostrar una ventana Modal que permita capturar los datos de los usuarios y enviarlos a la API en el metodo **POST**.
+
+
