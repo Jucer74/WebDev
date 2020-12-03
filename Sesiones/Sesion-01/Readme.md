@@ -64,7 +64,7 @@ Vamos a crear un usuario administrador para poder aceder a la base de datos desd
 - **Login Name:** Admin
 - Select **SQL Server Autentication**
 	- **Password:** Admin123
-	- **Confirm Password:** Admin 123 
+	- **Confirm Password:** Admin123 
 - **Uncheck** Enforce password policy
 - **Default database:** UsersDB
 
