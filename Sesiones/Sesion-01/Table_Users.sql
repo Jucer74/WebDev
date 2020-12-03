@@ -1,4 +1,4 @@
-USE [UsersDB]
+USE [UserDB]
 GO
 
 /****** Object:  Table [dbo].[Users]    Script Date: 10/24/2020 12:21:41 AM ******/
@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[User](
+CREATE TABLE [dbo].[Users](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Email] [varchar](255) NOT NULL,
 	[Name] [varchar](50) NOT NULL,
