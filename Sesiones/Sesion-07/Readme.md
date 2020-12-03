@@ -363,6 +363,10 @@ import axios from 'axios';
 import { Button, Container, Table } from 'react-bootstrap';
 import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import 'jquery/dist/jquery.min.js';
+import 'datatables.net-dt/js/dataTables.dataTables';
+import 'datatables.net-dt/css/jquery.dataTables.min.css';
+import $ from 'jquery'; 
 ```
 
 - Adicionamos los componentes de **useState** y **useEffect**, par amanejar los estados y resultados de los llamados a la API.
@@ -391,13 +395,18 @@ export function List()
     GetUsers();
   },[]);
 
+
+  $(document).ready(function () {
+    $('#UsersTable').DataTable();
+  });
+
 return (
   <Container className="text-center text-md-left">
     <h1>User List</h1>
     <p>
       <Button className="left" variant="success btn-sm"> <Fas icon={faPlus} /> New</Button>
     </p>
-    <Table striped bordered hover>
+    <Table id="UsersTable">
       <thead>
           <tr>
               <th>Id</th>
@@ -410,7 +419,7 @@ return (
         </thead>
       <tbody>
         {data.map(usr=>(
-          <tr>
+          <tr key={usr.id}>
             <td>{usr.id}</td>
             <td>{usr.email}</td>
             <td>{usr.name}</td>

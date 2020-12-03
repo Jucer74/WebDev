@@ -3,15 +3,21 @@ import axios from 'axios';
 import { Button, Container, Table } from 'react-bootstrap';
 import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import 'jquery/dist/jquery.min.js';
+import 'datatables.net-dt/js/dataTables.dataTables';
+import 'datatables.net-dt/css/jquery.dataTables.min.css';
+import $ from 'jquery'; 
+
+const baseUrl = "https://localhost:5001/api";
 
 export function List()
 {
-  const baseUrl = "https://localhost:5001/api/Users";
 
+  const listUsersUrl = baseUrl + "/Users";
   const [ data, setData] = useState([]);
 
   const GetUsers = async() => {
-    await axios.get(baseUrl)
+    await axios.get(listUsersUrl)
     .then (response=>{
       setData(response.data);
     }).catch(error=>{
@@ -19,9 +25,11 @@ export function List()
     })
   }
 
-  useEffect(()=>{
-    GetUsers();
-  },[]);
+
+
+  $(document).ready(function () {
+    $('#UsersTable').DataTable();
+  });
 
 return (
   <Container className="text-center text-md-left">
@@ -29,7 +37,7 @@ return (
     <p>
       <Button className="left" variant="success btn-sm"> <Fas icon={faPlus} /> New</Button>
     </p>  
-    <Table>
+    <Table id="UsersTable">
       <thead>
         <tr>
             <th>Id</th>
@@ -42,7 +50,7 @@ return (
       </thead>
       <tbody>
         {data.map(usr=>(
-          <tr>
+          <tr key={usr.id}>
             <td>{usr.id}</td>
             <td>{usr.email}</td>
             <td>{usr.name}</td>
@@ -61,3 +69,7 @@ return (
 );
 }
 
+export function CreateUser()
+{
+
+}

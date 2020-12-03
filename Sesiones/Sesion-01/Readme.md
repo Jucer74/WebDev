@@ -17,11 +17,11 @@ Usando Microsoft **SQL Server Management Studio (SSMS)**, creamos una nueva base
 
 ![Database](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-01/Database-04.png)
 
-	Id		:	int				Not Null
+	Id		:	int		Not Null
 	Email		:	Varchar(255)	Not Null
-	Name		:	Varchar(255)	Not Null
-	Password	:	Varchar(255)	Not Null
-	Username	:	Varchar(255)	Not Null
+	Name		:	Varchar(50)	Not Null
+	Password	:	Varchar(50)	Not Null
+	Username	:	Varchar(50)	Not Null
  
 **6.** Seleccione el campo **Id** y en las propiedades escoja la propiedad **Identity Especification** y en el campo **(IsIdentity)** escoja la opción **True**.
 
@@ -64,7 +64,7 @@ Vamos a crear un usuario administrador para poder aceder a la base de datos desd
 - **Login Name:** Admin
 - Select **SQL Server Autentication**
 	- **Password:** Admin123
-	- **Confirm Password:** Admin 123 
+	- **Confirm Password:** Admin123 
 - **Uncheck** Enforce password policy
 - **Default database:** UsersDB
 
