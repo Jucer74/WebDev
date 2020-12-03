@@ -63,6 +63,7 @@ export function List()
   const openCloseModalUpdate=()=>{
     setShowModalUpdate(!showModalUpdate);
   }
+
   const selectCurrentUser=(user, action)=>{
     setCurrentUser(user);
     switch (action) {
@@ -70,15 +71,18 @@ export function List()
         openCloseModalUpdate();
         break;
       case "Details":
-        getUser(user);
+        openCloseModalDetails();
         break;
+      case "Delete":
+          openCloseModalDelete();
+          break;        
       default:
         break;
     }     
   }
 
   const putUser = async() => {
-    await axios.put(baseUrl+"/"+currentUser.id, currentUser)
+    await axios.put(baseUrl+"/"+ currentUser.id, currentUser)
     .then (response=>{
       var result = response.data;
       var updatedData = data;
@@ -102,26 +106,21 @@ export function List()
     setShowModalDetails(!showModalDetails);
   }
 
-  // Todo Hacer el Details
-  const getUser = async(user) => {
-    await axios.get(baseUrl+"/"+user.id)
-    .then (response=>{
-      var result = response.data;
-      var updatedData = data;
-      updatedData.map(usr=>{
-        if(usr.id===currentUser.id){
-          usr.email = result.email;
-          usr.name = result.name;
-          usr.username = result.username;
-          usr.password = result.password;
-        }
-      });
-      openCloseModalDetails();
+  // Delete
+  const [showModalDelete, setShowModalDelete]= useState(false);
+  const openCloseModalDelete=()=>{
+    setShowModalDelete(!showModalDelete);
+  }
+
+  const deleteUser = async() => {
+    await axios.delete(baseUrl+"/"+ currentUser.id)
+    .then (()=>{
+      setData(data.filter(usr=>usr.id!=currentUser.id));
+      openCloseModalDelete();
     }).catch(error=>{
       console.log(error);
     })
   }  
-
 
 return (
   <Container className="text-center text-md-left">
@@ -147,11 +146,11 @@ return (
             <td>{usr.email}</td>
             <td>{usr.name}</td>
             <td>{usr.username}</td>
-            <td>{usr.password}</td>
+            <td>{"**********"}</td>
             <td>
               <Button variant="outline-primary" onClick={()=>selectCurrentUser(usr, "Edit")}>Edit</Button>{"  "}
               <Button variant="outline-warning" onClick={()=>selectCurrentUser(usr, "Details")}>Details</Button>{"  "}
-              <Button variant="outline-danger">Delete</Button>
+              <Button variant="outline-danger" onClick={()=>selectCurrentUser(usr, "Delete")}>Delete</Button>
             </td>
           </tr>
         ))}
@@ -164,11 +163,11 @@ return (
       <ModalBody>
         <Form>
           <Form.Group>
-            <Form.Label variant="label">Email:</Form.Label>
+            <Form.Label>Email:</Form.Label>
             <Form.Control type="email" id="txtEmail" name="email" placeholder="username@domain.com" required onChange={handleChange}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label >Name:</Form.Label>
+            <Form.Label>Name:</Form.Label>
             <Form.Control type="text" id="txtName" name="name" placeholder="Julio Robles" required onChange={handleChange}/>
           </Form.Group>
           <Form.Group>
@@ -193,11 +192,11 @@ return (
       <ModalBody>
         <Form>
           <Form.Group>
-            <Form.Label variant="label">Id:</Form.Label>
+            <Form.Label>Id:</Form.Label>
             <Form.Control type="text" id="txtId" name="id" readOnly value={currentUser && currentUser.id}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label variant="label">Email:</Form.Label>
+            <Form.Label>Email:</Form.Label>
             <Form.Control type="email" id="txtEmail" name="email" placeholder="username@domain.com" required onChange={handleChange}  value={currentUser && currentUser.email}/>
           </Form.Group>
           <Form.Group>
@@ -227,15 +226,15 @@ return (
       <ModalBody>
         <Form>
           <Form.Group>
-            <Form.Label variant="label">Id:</Form.Label>
+            <Form.Label>Id:</Form.Label>
             <Form.Control type="text" id="txtId" name="id" readOnly value={currentUser && currentUser.id}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label variant="label">Email:</Form.Label>
+            <Form.Label>Email:</Form.Label>
             <Form.Control type="email" id="txtEmail" name="email" readOnly value={currentUser && currentUser.email}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label >Name:</Form.Label>
+            <Form.Label>Name:</Form.Label>
             <Form.Control type="text" id="txtName" name="name" readOnly value={currentUser && currentUser.name}/>
           </Form.Group>
           <Form.Group>
@@ -244,7 +243,7 @@ return (
           </Form.Group>
           <Form.Group>
             <Form.Label>Password:</Form.Label>
-            <Form.Control type="password" id="txtPassword" name="password" readOnly value={currentUser && currentUser.password}/>
+            <Form.Control type="text" id="txtPassword" name="password" readOnly value={currentUser && currentUser.password}/>
           </Form.Group>
         </Form>
       </ModalBody>
@@ -252,6 +251,30 @@ return (
         <Button variant="outline-info" onClick={()=>openCloseModalDetails()}>Back</Button>
       </ModalFooter>
     </Modal>
+
+    {/* Delete */}
+    <Modal isOpen={showModalDelete}>
+      <ModalHeader>Are you sure to delete this user?</ModalHeader>
+      <ModalBody>
+        <Form>
+          <Form.Group>
+            <Form.Label><b>Id:</b></Form.Label>
+            <Form.Label>{currentUser && currentUser.id}</Form.Label><br/>
+            <Form.Label>Email:</Form.Label>
+            <Form.Label>{currentUser && currentUser.email}</Form.Label><br/>
+            <Form.Label>Name:</Form.Label>
+            <Form.Label>{currentUser && currentUser.name}</Form.Label><br/>
+            <Form.Label>Username:</Form.Label>
+            <Form.Label>{currentUser && currentUser.username}</Form.Label><br/>
+          </Form.Group>
+        </Form>
+      </ModalBody>
+      <ModalFooter>
+        <Button variant="danger" onClick={()=>deleteUser(currentUser.id)}>Delete</Button>
+        <Button variant="outline-info" onClick={()=>openCloseModalDelete()}>Back</Button>
+      </ModalFooter>
+    </Modal>
+
   </Container>  
 
 );
