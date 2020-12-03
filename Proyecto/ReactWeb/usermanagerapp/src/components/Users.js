@@ -115,7 +115,7 @@ export function List()
   const deleteUser = async() => {
     await axios.delete(baseUrl+"/"+ currentUser.id)
     .then (()=>{
-      setData(data.filter(usr=>usr.id!=currentUser.id));
+      setData(data.filter(usr=>usr.id!==currentUser.id));
       openCloseModalDelete();
     }).catch(error=>{
       console.log(error);
