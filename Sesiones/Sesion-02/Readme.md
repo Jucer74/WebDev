@@ -283,7 +283,28 @@ En este punto debemos ver algo parecido a esto:
 
 Asi podemos ver la lista de todos los usuarios que tenemos en la tabla de nuestra base de datos.
 
+
 De igual forma ahora podemos ejecutar todos las acciones utilizando nuestra API.
+
+# Refinemos 
+Ahora vamos a modificar algunas de las acciones para simplificar la respuesta.
+
+1. Modificar la respuesta del metodo PostUser
+
+```js
+return Created(string.Empty, new { id = user.Id });
+```
+
+2. Modificar la respuesta dle metodo DeleteUser
+
+```js
+return NoContent();
+```
+
+De esta forma se simplifican las respuestas para este tipo de proyecto. mas adelantes adicionaremos el manejo de seguridad para evitar los riesgos de estas operaciones.
+
+
+
 
 # Adicionemos SWAGGER
 Para facilitar el proceso de pruebas de todas las acciones, adicionaremos el servicio de Swagger a nuestra aplicación, de esta forma será mucho mas facil consumir nuestra API directamente. para ello ejecutaremos los siguientes pasos:
