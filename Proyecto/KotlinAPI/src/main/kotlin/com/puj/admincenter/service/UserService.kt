@@ -68,8 +68,10 @@ class UserService(private val userRepository: UserRepository) {
         val currentUser = userRepository.findById(userId);
         return if(currentUser.isPresent()) {
             val updateUser:User = currentUser.get().copy(
+				email = updateUserDto.email,
                 name = updateUserDto.name,
-                username = updateUserDto.username
+                username = updateUserDto.username,
+				password = updateUserDto.password
             )
             val userSaved = userRepository.save(updateUser)
             LOG.info("User ${userSaved.email} was updated successfully")

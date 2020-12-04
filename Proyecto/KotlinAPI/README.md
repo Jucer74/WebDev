@@ -34,6 +34,8 @@ or make execute ENV=[local|dev|stage|prod]
 
 https://dzone.com/articles/jwts-with-spring-boot-and-java-9
 
+### Running on Windows
+java -jar .\build\libs\puj-api-admincenter-2.0.0-SNAPSHOT.jar --spring.profiles.active=dev
 
 ## Install JDK 8
 https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html

@@ -1,6 +1,8 @@
 package com.puj.admincenter.dto.users
 
 data class UpdateUserDto(
-    val name: String,
-    val username: String
+    val email: String,
+    var name: String,
+    var username: String,
+    var password: String    
 )
