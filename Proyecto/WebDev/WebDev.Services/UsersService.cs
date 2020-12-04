@@ -146,7 +146,7 @@ namespace WebDev.Services
       await _restClient.ExecuteAsync(request);
     }
 
-    public async Task<UserDto> DeleteUser(int id)
+    public async Task DeleteUser(int id)
     {
       UserDto userDtoResponse = null;
 
@@ -165,18 +165,6 @@ namespace WebDev.Services
 
       // Execute the Call
       IRestResponse response = await _restClient.ExecuteAsync(request);
-
-      // Checking the response is successful or not which is sent using HttpClient
-      if (response.StatusCode == HttpStatusCode.NoContent)
-      {
-        // Storing the content response recieved from web api
-        var responseContent = response.Content;
-
-        // Deserializing the response recieved from web api
-        userDtoResponse = JsonConvert.DeserializeObject<UserDto>(responseContent);
-      }
-
-      return userDtoResponse;
     }
   }
 }
