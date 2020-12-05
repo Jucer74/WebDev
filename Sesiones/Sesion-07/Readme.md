@@ -392,10 +392,6 @@ export function List()
   },[]);
 
 
-  $(document).ready(function () {
-    $('#UsersTable').DataTable();
-  });
-
 return (
   <Container className="text-center text-md-left">
     <h1>User List</h1>
@@ -468,14 +464,3 @@ app.UseCors(options => {
 ```
 
 Tenga presente que la url hace referencia al sitio web desde donde se consume la API.
-
-# Creación de Usuarios
-1. Adicione a las librerias actuales el llamado a los componentes Modales de la libreria **reactstrap** así:
-
-```js
-import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-```
-
-2. Cree la función **CreateUser** para mostrar una ventana Modal que permita capturar los datos de los usuarios y enviarlos a la API en el metodo **POST**.
-
-
