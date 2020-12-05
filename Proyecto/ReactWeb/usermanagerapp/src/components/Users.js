@@ -3,11 +3,12 @@ import axios from 'axios';
 import { Button, Container, Table } from 'react-bootstrap';
 import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+
+const baseUrl = "https://localhost:5001/api/Users";
 
 export function List()
 {
-  const baseUrl = "https://localhost:5001/api/Users";
-
   const [ data, setData]=useState([]);  
 
   const GetUsers=async()=>{
