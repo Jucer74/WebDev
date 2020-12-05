@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using WebDev.Api.Context;
 using WebDev.Api.Model;
 
@@ -29,11 +27,10 @@ namespace WebDev.Api.Controllers
       _configuration = configuration;
     }
 
-
     // POST api/<LoginController>
     [HttpPost]
     [AllowAnonymous]
-    public async Task<ActionResult<LoginResponse>> Post([FromBody] Login login)
+    public ActionResult<LoginResponse> Post([FromBody] Login login)
     {
       var user = _context.Users.SingleOrDefault(u => u.Email == login.email && u.Password == login.Password);
       if (user is null)
@@ -43,45 +40,47 @@ namespace WebDev.Api.Controllers
       return Ok(GetResponse(user));
     }
 
-    private  LoginResponse GetResponse(User user)
+    private LoginResponse GetResponse(User user)
     {
-      // Create the Header
-      var symmetricSecurityKey = new SymmetricSecurityKey(
-        Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]));
-      var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
-      var header = new JwtHeader(signingCredentials);
+      // https://www.rafaelacosta.net/Blog/2019/5/20/json-web-token-seguridad-en-servicios-web-api-de-net-core
+      //// Create the Header
+      //var symmetricSecurityKey = new SymmetricSecurityKey(
+      //  Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]));
+      //var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+      //var header = new JwtHeader(signingCredentials);
 
-      // Create the Claims
-      var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
-                new Claim("name", user.Name),
-                new Claim("username", user.Username),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email)
-            };
+      //// Create the Claims
+      //var claims = new[] {
+      //          new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+      //          new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+      //          new Claim("name", user.Name),
+      //          new Claim("username", user.Username),
+      //          new Claim(JwtRegisteredClaimNames.Email, user.Email)
+      //      };
 
-      // Create the POayLoad
-      var payload = new JwtPayload(
-              issuer: _configuration["JWT:Issuer"],
-              audience: _configuration["JWT:Audience"],
-              claims: claims,
-              notBefore: DateTime.UtcNow,
-              // Expire in 24 hours.
-              expires: DateTime.UtcNow.AddHours(24)
-          );
+      //// Create the POayLoad
+      //var payload = new JwtPayload(
+      //        issuer: _configuration["JWT:Issuer"],
+      //        audience: _configuration["JWT:Audience"],
+      //        claims: claims,
+      //        notBefore: DateTime.UtcNow,
+      //        // Expire in 24 hours.
+      //        expires: DateTime.UtcNow.AddHours(24)
+      //    );
 
-      // Generate the Token
-      var token = new JwtSecurityToken(header, payload);
-      var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-      var bearToken = jwtSecurityTokenHandler.WriteToken(token);
+      //// Generate the Token
+      //var token = new JwtSecurityToken(header, payload);
+      //var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+      //var bearToken = jwtSecurityTokenHandler.WriteToken(token);
 
-      //var bearToken = generateJwtToken(user);
+      var bearToken = string.Format("Bearer {0}", GenerateJwtToken(user));
 
       return new LoginResponse { Token = bearToken, UserId = user.Id, Name = user.Name };
     }
 
-    private string generateJwtToken(User user)
+    private string GenerateJwtToken(User user)
     {
+      // https://www.c-sharpcorner.com/article/how-to-use-jwt-authentication-with-web-api/
       // generate token that is valid for 7 days
       var tokenHandler = new JwtSecurityTokenHandler();
       var key = Encoding.ASCII.GetBytes(_configuration["JWT:SecretKey"]);
@@ -94,6 +93,5 @@ namespace WebDev.Api.Controllers
       var token = tokenHandler.CreateToken(tokenDescriptor);
       return tokenHandler.WriteToken(token);
     }
-
   }
 }
