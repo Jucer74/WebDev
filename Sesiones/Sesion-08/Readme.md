@@ -108,6 +108,10 @@ import { Button, Container, Table, Form } from 'react-bootstrap';
 
 8. Ahora adicione el llamado a la ventana modal desde el botón de **New User** asignado la función **openCloseModalCreate** an evento **onClick** de dicho botón.
 
+```js
+<Button className="left" variant="success btn-sm" onClick={()=>openCloseModalCreate()}> <Fas icon={faPlus} /> New</Button>
+```
+
 ## Editar Usuario
 1. Al igual que en la accion de **New User** cree un nuevo estado para abrir y cerrar el modal
 
@@ -150,6 +154,7 @@ const putUser = async() => {
         usr.password = result.password;
       }
     });
+	getUsers();
     openCloseModalUpdate();
   }).catch(error=>{
     console.log(error);
@@ -320,11 +325,11 @@ const deleteUser = async() => {
       <Form.Group>
         <Form.Label><b>Id:</b></Form.Label>
         <Form.Label>{currentUser && currentUser.id}</Form.Label><br/>
-        <Form.Label>Email:</Form.Label>
+        <Form.Label><b>Email:</b></Form.Label>
         <Form.Label>{currentUser && currentUser.email}</Form.Label><br/>
-        <Form.Label>Name:</Form.Label>
+        <Form.Label><b>Name:</b></Form.Label>
         <Form.Label>{currentUser && currentUser.name}</Form.Label><br/>
-        <Form.Label>Username:</Form.Label>
+        <Form.Label><b>Username:</b></Form.Label>
         <Form.Label>{currentUser && currentUser.username}</Form.Label><br/>
       </Form.Group>
     </Form>
@@ -337,5 +342,24 @@ const deleteUser = async() => {
 ```
 
 5. Adiciona la acción al metodo **selectCurrentUSer**
+
+```js
+const selectCurrentUser=(user, action)=>{
+  setCurrentUser(user);
+  switch (action) {
+    case "Edit":
+      openCloseModalUpdate();
+      break;
+    case "Details":
+      openCloseModalDetails();
+      break;      
+    case "Delete":
+      openCloseModalDelete();
+      break;             
+    default:
+      break;
+  }     
+}
+```
 
 Ahora probemos todo junto y veamos como funciona.
