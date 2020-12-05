@@ -23,7 +23,7 @@ export function List()
   
   useEffect(()=>{
     getUsers();
-  });
+  },[]);
 
   // Control data
   const [currentUser, setCurrentUser]= useState({
@@ -51,7 +51,8 @@ export function List()
     delete currentUser.id;
     await axios.post(baseUrl, currentUser)
     .then (response=>{
-      setData(data.concat(response.data));
+      //setData(data.concat(response.data));
+      getUsers();
       openCloseModalCreate();
     }).catch(error=>{
       console.log(error);
