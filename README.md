@@ -1,6 +1,6 @@
 # WebDev
-Curso de Desarollo Web, conceptos Básicos-
-Veremos los principios básicos de desarrollo Fron-End y su interacción y uso de herramientas y servicios de Back-End
+Curso de Desarollo Web, (Conceptos Básicos)
+Veremos los principios básicos de desarrollo Front-End y su interacción, así como el uso de herramientas y servicios de Back-End
 
 ## Temas
 - Introducción
@@ -32,6 +32,7 @@ Veremos los principios básicos de desarrollo Fron-End y su interacción y uso d
 - [Asp.net core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [PostMan](https://www.postman.com/downloads/)
+- [Node Js](https://nodejs.org/en/download/)
 
 ## Extensiones
 
@@ -53,3 +54,10 @@ Veremos los principios básicos de desarrollo Fron-End y su interacción y uso d
 - TSLint
 - Prettier
 - vscode-icons
+
+# Notas
+En caso de no poder hacer cambios sobre el sistema operativo pueden descargar esta maquina virtual y sobre ella instalar lo que falta.
+
+[Download a virtual machine](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)
+
+Esta máquina ya tiene instalado Visual studio 2019 y Visual Studio Code, las demás herramientas deben ser instaladas sobre la maquina virtual.

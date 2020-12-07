@@ -1,0 +1,212 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "\"AdminCenter PUJ RESTful API\"",
+		"version": "1.1.0",
+		"title": "AdminCenter PUJ API"
+	},
+	"host": "localhost",
+	"basePath": "/api",
+	"tags": [
+		{
+			"name": "login-controller",
+			"description": "Login Controller"
+		},
+		{
+			"name": "user-controller",
+			"description": "User Controller"
+		}
+	],
+	"paths": {
+		"/login": {
+			"post": {
+				"tags": [
+					"login-controller"
+				],
+				"summary": "login",
+				"operationId": "loginUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "loginDto",
+						"description": "loginDto",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/LoginDto"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/users": {
+			"post": {
+				"tags": [
+					"user-controller"
+				],
+				"summary": "create",
+				"operationId": "createUsingPOST",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "authorization",
+						"in": "header",
+						"description": "authorization",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "createUserDto",
+						"description": "createUserDto",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/CreateUserDto"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"201": {
+						"description": "Created"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/users/{userId}": {
+			"get": {
+				"tags": [
+					"user-controller"
+				],
+				"summary": "getById",
+				"operationId": "getByIdUsingGET",
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"name": "authorization",
+						"in": "header",
+						"description": "authorization",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "userId",
+						"in": "path",
+						"description": "userId",
+						"required": true,
+						"type": "integer",
+						"format": "int32"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"403": {
+						"description": "Forbidden"
+					},
+					"404": {
+						"description": "Not Found"
+					}
+				},
+				"deprecated": false
+			}
+		}
+	},
+	"definitions": {
+		"CreateUserDto": {
+			"type": "object",
+			"required": [
+				"email",
+				"name",
+				"password",
+				"username"
+			],
+			"properties": {
+				"email": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			},
+			"title": "CreateUserDto"
+		},
+		"LoginDto": {
+			"type": "object",
+			"required": [
+				"password",
+				"username"
+			],
+			"properties": {
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			},
+			"title": "LoginDto"
+		}
+	}
+}
