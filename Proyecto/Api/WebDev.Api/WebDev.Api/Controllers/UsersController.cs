@@ -48,12 +48,12 @@ namespace WebDev.Api.Controllers
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
     [HttpPost]
     [Authorize] 
-    public async Task<ActionResult<User>> PostUser(User user)
+    public async Task<ActionResult<UserIdResponse>> PostUser(User user)
     {
       _context.Users.Add(user);
       await _context.SaveChangesAsync();
 
-      return Created(string.Empty, new { id = user.Id });
+      return Created(string.Empty, new UserIdResponse { Id = user.Id });
     }
 
     // PUT: api/Users/5
