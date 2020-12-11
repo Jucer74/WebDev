@@ -22,7 +22,7 @@ namespace WebDev.Api.Controllers
 
     // GET: api/Users
     [HttpGet]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<IEnumerable<User>>> GetUsers()
     {
       return await _context.Users.ToListAsync();
@@ -30,7 +30,7 @@ namespace WebDev.Api.Controllers
 
     // GET: api/Users/5
     [HttpGet("{id}")]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<User>> GetUser(int id)
     {
       var user = await _context.Users.FindAsync(id);
@@ -47,7 +47,7 @@ namespace WebDev.Api.Controllers
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
     [HttpPost]
-    //[Authorize] 
+    [Authorize] 
     public async Task<ActionResult<User>> PostUser(User user)
     {
       _context.Users.Add(user);
@@ -60,7 +60,7 @@ namespace WebDev.Api.Controllers
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
     [HttpPut("{id}")]
-    //[Authorize]
+    [Authorize]
     public async Task<IActionResult> PutUser(int id, User user)
     {
       if (id != user.Id)
@@ -92,7 +92,7 @@ namespace WebDev.Api.Controllers
 
     // DELETE: api/Users/5
     [HttpDelete("{id}")]
-    //[Authorize] 
+    [Authorize] 
     public async Task<ActionResult<User>> DeleteUser(int id)
     {
       var user = await _context.Users.FindAsync(id);

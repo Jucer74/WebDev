@@ -43,55 +43,37 @@ namespace WebDev.Api.Controllers
     private LoginResponse GetResponse(User user)
     {
       // https://www.rafaelacosta.net/Blog/2019/5/20/json-web-token-seguridad-en-servicios-web-api-de-net-core
-      //// Create the Header
-      //var symmetricSecurityKey = new SymmetricSecurityKey(
-      //  Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]));
-      //var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
-      //var header = new JwtHeader(signingCredentials);
+      // Create the Header
+      var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]));
+      var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+      var header = new JwtHeader(signingCredentials);
 
-      //// Create the Claims
-      //var claims = new[] {
-      //          new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-      //          new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
-      //          new Claim("name", user.Name),
-      //          new Claim("username", user.Username),
-      //          new Claim(JwtRegisteredClaimNames.Email, user.Email)
-      //      };
+      // Create the Claims
+      var infoClaims = new[] {
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                new Claim("name", user.Name),
+                new Claim("username", user.Username),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email)
+            };
 
-      //// Create the POayLoad
-      //var payload = new JwtPayload(
-      //        issuer: _configuration["JWT:Issuer"],
-      //        audience: _configuration["JWT:Audience"],
-      //        claims: claims,
-      //        notBefore: DateTime.UtcNow,
-      //        // Expire in 24 hours.
-      //        expires: DateTime.UtcNow.AddHours(24)
-      //    );
+      // Create the POayLoad
+      var payload = new JwtPayload(
+              issuer: _configuration["JWT:Issuer"],
+              audience: _configuration["JWT:Audience"],
+              claims: infoClaims,
+              notBefore: DateTime.UtcNow,
+              // Expire in 24 hours.
+              expires: DateTime.UtcNow.AddHours(24)
+          );
 
-      //// Generate the Token
-      //var token = new JwtSecurityToken(header, payload);
-      //var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-      //var bearToken = jwtSecurityTokenHandler.WriteToken(token);
+      // Generate the Token
+      var token = new JwtSecurityToken(header, payload);
+      var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+      var bearerToken = string.Format("Bearer {0}", jwtSecurityTokenHandler.WriteToken(token));
 
-      var bearToken = string.Format("Bearer {0}", GenerateJwtToken(user));
-
-      return new LoginResponse { Token = bearToken, UserId = user.Id, Name = user.Name };
+      return new LoginResponse { Token = bearerToken, UserId = user.Id, Name = user.Name };
     }
 
-    private string GenerateJwtToken(User user)
-    {
-      // https://www.c-sharpcorner.com/article/how-to-use-jwt-authentication-with-web-api/
-      // generate token that is valid for 7 days
-      var tokenHandler = new JwtSecurityTokenHandler();
-      var key = Encoding.ASCII.GetBytes(_configuration["JWT:SecretKey"]);
-      var tokenDescriptor = new SecurityTokenDescriptor
-      {
-        Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
-        Expires = DateTime.UtcNow.AddHours(24),
-        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-      };
-      var token = tokenHandler.CreateToken(tokenDescriptor);
-      return tokenHandler.WriteToken(token);
-    }
   }
 }
