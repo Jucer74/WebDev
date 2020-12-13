@@ -27,15 +27,15 @@ namespace WebDev.Application.Controllers
     [HttpGet]
     public async Task<ActionResult> Index()
     {
+      ViewData["IsUserLogged"] = HttpContext.Session.GetString("IsUserLogged");
+
       usersService.TokenDto = TokenMapper.ToDto(JsonConvert.DeserializeObject<TokenData>(HttpContext.Session.GetString("TokenData")));
 
       IList<UserDto> users = await usersService.GetUsers();
 
-      List<User> _userList = users.Select(userDto => UserMapper.ToEntity(userDto)).ToList();
+      List<User> userList = users.Select(userDto => UserMapper.ToEntity(userDto)).ToList();
 
-      ViewData["IsUserLogged"] = HttpContext.Session.GetString("IsUserLogged");
-
-      return View(_userList);
+      return View(userList);
     }
 
     // GET: UsersController/Details/5
@@ -49,8 +49,9 @@ namespace WebDev.Application.Controllers
         return NotFound();
       }
 
-      var user = UserMapper.ToEntity(userFound);
+      ViewData["IsUserLogged"] = HttpContext.Session.GetString("IsUserLogged");
 
+      var user = UserMapper.ToEntity(userFound);
       return View(user);
     }
 
@@ -58,6 +59,7 @@ namespace WebDev.Application.Controllers
     [HttpGet]
     public ActionResult Create()
     {
+      ViewData["IsUserLogged"] = HttpContext.Session.GetString("IsUserLogged");
       return View();
     }
 
@@ -94,15 +96,16 @@ namespace WebDev.Application.Controllers
         return NotFound();
       }
 
-      var user = UserMapper.ToEntity(userFound);
+      ViewData["IsUserLogged"] = HttpContext.Session.GetString("IsUserLogged");
 
+      var user = UserMapper.ToEntity(userFound);
       return View(user);
     }
 
     // POST: UsersController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Edit(User user)
+    public async Task<IActionResult> Edit(User user)
     {
       try
       {
@@ -132,8 +135,9 @@ namespace WebDev.Application.Controllers
         return NotFound();
       }
 
-      var user = UserMapper.ToEntity(userFound);
+      ViewData["IsUserLogged"] = HttpContext.Session.GetString("IsUserLogged");
 
+      var user = UserMapper.ToEntity(userFound);
       return View(user);
     }
 

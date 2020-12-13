@@ -23,7 +23,7 @@ namespace WebDev.Services
       TokenDto tokenDtoResponse = null;
 
       // Assign the URL
-      _restClient.BaseUrl = new Uri($"{BaseUrl}login");
+      _restClient.BaseUrl = new Uri($"{BaseUrl}/login");
 
       // Wait until to get a response
       _restClient.Timeout = -1;

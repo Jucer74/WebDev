@@ -25,7 +25,7 @@ namespace WebDev.Services
       var usersList = new List<UserDto>();
 
       // Assign the URL
-      _restClient.BaseUrl = new Uri($"{BaseUrl}users");
+      _restClient.BaseUrl = new Uri($"{BaseUrl}/users");
 
       // Wait until to get a response
       _restClient.Timeout = -1;
@@ -58,7 +58,7 @@ namespace WebDev.Services
       UserDto user = null;
 
       // Assign the URL
-      _restClient.BaseUrl = new Uri($"{BaseUrl}users/{id}");
+      _restClient.BaseUrl = new Uri($"{BaseUrl}/users/{id}");
 
       // Wait until to get a response
       _restClient.Timeout = -1;
@@ -91,7 +91,7 @@ namespace WebDev.Services
       UserCreatedDto userCreatedDtoResponse = null;
 
       // Assign the URL
-      _restClient.BaseUrl = new Uri($"{BaseUrl}users");
+      _restClient.BaseUrl = new Uri($"{BaseUrl}/users");
 
       // Wait until to get a response
       _restClient.Timeout = -1;
@@ -126,7 +126,7 @@ namespace WebDev.Services
     public async Task UpdateUser(UserDto user)
     {
       // Assign the URL
-      _restClient.BaseUrl = new Uri($"{BaseUrl}users/{user.id}");
+      _restClient.BaseUrl = new Uri($"{BaseUrl}/users/{user.id}");
 
       // Wait until to get a response
       _restClient.Timeout = -1;
@@ -151,7 +151,7 @@ namespace WebDev.Services
       UserDto userDtoResponse = null;
 
       // Assign the URL
-      _restClient.BaseUrl = new Uri($"{BaseUrl}users/{id}");
+      _restClient.BaseUrl = new Uri($"{BaseUrl}/users/{id}");
 
       // Wait until to get a response
       _restClient.Timeout = -1;
