@@ -210,7 +210,7 @@ export const Users = () => (
 ```
 
 ### La página de No coincidencias
-Cree un nuevo archivo llamado **Users.js** y asignele el siguiente contenido:
+Cree un nuevo archivo llamado **NoMatch.js** y asignele el siguiente contenido:
 
 ```js
 import React from 'react';
