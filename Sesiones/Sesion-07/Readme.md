@@ -266,7 +266,7 @@ Ahora en nuestro archivo de aplicacion (**App.js**)  vamos a realizar el manejo 
 1. Incluya el enrutador
 
 ```js
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 ```
 En este caso identifique el el componente **BrouwserRouter** se idndentificara ahora con el alias de **Router**, lo que lo hace mas sencillo de identificar.
 
@@ -278,11 +278,11 @@ import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
-import { List } from './components/Users';
+import { Users } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
 ```
 
-3. Utilice el componente **React.Fragment** para renderizar el codigo en su enterior.
+3. Vamos a utilizar el componente **React.Fragment** para renderizar el Navigation bar su enterior. Por ahora solo tengalo presente ya que este componente lo usaremos mas adelante.
 
 ```
 <React.Fragment>
@@ -300,13 +300,13 @@ import { NavigationBar } from './components/NavigationBar';
 
 ```js
 <Router>
- <Switch> 
+ <Routes> 
    <Route exact path="/" component={Home} />
    <Route path="/Home" component={Home} />
-   <Route path="/Users" component={List} />
+   <Route path="/Users" component={Users} />
    <Route path="/Login" component={Login} />
    <Route component={NoMatch} />
- </Switch>
+ </Routes>
 </Router>
 ```
 
@@ -320,7 +320,7 @@ Integrando todo tenemos lo siguiente:
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
@@ -336,13 +336,13 @@ function App() {
         <NavigationBar />
         <Layout>
           <Router>
-            <Switch>
+            <Routes>
               <Route exact path="/" component={Home} />
               <Route path="/Home" component={Home} />
               <Route path="/Users" component={Users} />
               <Route path="/Login" component={Login} />
               <Route component={NoMatch} />
-            </Switch>
+            </Routes>
           </Router>
         </Layout>
       </React.Fragment>
