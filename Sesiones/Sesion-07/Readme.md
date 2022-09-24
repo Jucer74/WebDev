@@ -4,9 +4,9 @@ En esta sesión veremos la implementación de nuestros formularios utilizando la
 ## Requisitos
 1. Primero que todo necesitamos instalar [NodeJS](https://nodejs.org/es/) e instaalar React
 
-^^^
+```
 npm install -g react react-dom
-^^^
+```
 
 2. Creamos una carpeta nueva, llamada **ReactWeb**, al mismo nivel de donde esta nuestro proyecto de **API**.
 
@@ -72,9 +72,7 @@ npm install -save axios
 Para los Iconos usaremos Font Awesome
 
 ```
-npm install -save @fortawesome/fontawesome-svg-core
-npm install -save @fortawesome/free-solid-svg-icons
-npm install -save @fortawesome/react-fontawesome
+npm install --save react-bootstrap-icons 
 ```
 
 Para el manejo de las tablas usaremos Datatables
