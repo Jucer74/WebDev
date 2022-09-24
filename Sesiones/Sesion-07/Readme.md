@@ -232,13 +232,15 @@ export const NavigationBar = () => (
           <Nav.Item><Nav.Link href="./Home">Home</Nav.Link></Nav.Item>
           <Nav.Item><Nav.Link href="/Users">Users</Nav.Link></Nav.Item>
         </Nav>
-        <Nav alignment="right">
+        <Nav className="justify-content-end" style={{ width: "100%" }}>
           <Nav.Item><Nav.Link href="/Login" >Login</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>        
     </Navbar>
   </Container>
 )
+
+
 ```
 
 ## La pagina de Layout
