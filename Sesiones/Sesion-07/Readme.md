@@ -2,7 +2,7 @@
 En esta sesión veremos la implementación de nuestros formularios utilizando la libreriá de REACT-JS y trabajaremos el CRUD de Usuarios tal como se realizo en el proyecto anterior pero ahora con esta nuevo libreria.
 
 ## Requisitos
-1. Primero que todo necesitamos instalar [NodeJS](https://nodejs.org/es/) e instaalar React
+1. Primero que todo necesitamos instalar [NodeJS](https://nodejs.org/es/) e instalar React
 
 ```
 npm install -g react react-dom
@@ -48,8 +48,7 @@ En este punto puede cerrar el navegador para continuar.
 Para los Estilos y los componentes
 
 ```
-npm install -save bootstrap 
-npm install -save react-bootstrap
+npm install react-bootstrap bootstrap
 ```
 
 Para las Ventanas Modales
@@ -69,7 +68,7 @@ Para los llamados a la API
 npm install -save axios
 ```
 
-Para los Iconos usaremos Font Awesome
+Para los Iconos usaremos Bootstrap Icons
 
 ```
 npm install --save react-bootstrap-icons 
@@ -106,6 +105,7 @@ import { Container, Image, Navbar, Nav } from 'react-bootstrap';
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+mport { Container, Image, Navbar, Nav } from 'react-bootstrap';
 
 function App() {
   return (
