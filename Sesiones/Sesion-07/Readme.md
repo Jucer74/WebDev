@@ -156,7 +156,7 @@ function App() {
               <Nav.Item><Nav.Link href="/Home">Home</Nav.Link></Nav.Item>
               <Nav.Item><Nav.Link href="/Users">Users</Nav.Link></Nav.Item>
             </Nav>
-            <Nav className="justify-content-end" style={{ width: "100%" }}>
+            <Nav className="ms-auto">
               <Nav.Item><Nav.Link href="/Login" >Login</Nav.Link></Nav.Item>
             </Nav>
           </Navbar.Collapse>        
@@ -232,7 +232,7 @@ export const NavigationBar = () => (
           <Nav.Item><Nav.Link href="./Home">Home</Nav.Link></Nav.Item>
           <Nav.Item><Nav.Link href="/Users">Users</Nav.Link></Nav.Item>
         </Nav>
-        <Nav className="justify-content-end" style={{ width: "100%" }}>
+        <Nav className="ms-auto">
           <Nav.Item><Nav.Link href="/Login" >Login</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>        
