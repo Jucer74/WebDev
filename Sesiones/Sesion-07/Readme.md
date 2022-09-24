@@ -74,13 +74,6 @@ Para los Iconos usaremos Bootstrap Icons
 npm install --save react-bootstrap-icons 
 ```
 
-Para el manejo de las tablas usaremos Datatables
-
-```
-npm install -save datatables.net-dt
-npm install -save jquery
-```
-
 
 # Iniciemos el Proyecto
 Nuestro proyecto inicia con el componente **App** que se define en el archivo **App.js**, por lo cual pasaremos a editarlo para incluir lo que necesitamos para nuestra aplicación.
