@@ -301,11 +301,11 @@ import { NavigationBar } from './components/NavigationBar';
 ```js
 <Router>
  <Routes> 
-   <Route exact path="/" component={Home} />
-   <Route path="/Home" component={Home} />
-   <Route path="/Users" component={Users} />
-   <Route path="/Login" component={Login} />
-   <Route component={NoMatch} />
+	  <Route exact path="/" element={<Home/>} />
+	  <Route path="/Home" element={<Home/>} />
+	  <Route path="/Users" element={<Users/>} />
+	  <Route path="/Login" element={<Login/>} />
+	  <Route element={<NoMatch/>} />
  </Routes>
 </Router>
 ```
@@ -325,7 +325,7 @@ import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
-import { List } from './components/Users';
+import { Users } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
 
 
@@ -337,11 +337,11 @@ function App() {
         <Layout>
           <Router>
             <Routes>
-              <Route exact path="/" component={Home} />
-              <Route path="/Home" component={Home} />
-              <Route path="/Users" component={Users} />
-              <Route path="/Login" component={Login} />
-              <Route component={NoMatch} />
+              <Route exact path="/" element={<Home/>} />
+              <Route path="/Home" element={<Home/>} />
+              <Route path="/Users" element={<Users/>} />
+              <Route path="/Login" element={<Login/>} />
+              <Route element={<NoMatch/>} />
             </Routes>
           </Router>
         </Layout>
