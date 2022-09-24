@@ -284,7 +284,13 @@ import { NavigationBar } from './components/NavigationBar';
 
 3. Utilice el componente **React.Fragment** para renderizar el codigo en su enterior.
 
-4. Luego incluya el llamado al componentes de **Navigation Bar** para adicinar el menú, Tenga presente que aqui el componente se cierra asi mismo, es decir no requiere **Tag** de Inicio ni **Tag** de fin. solo el llamado al componente.
+```
+<React.Fragment>
+ .... Aqui Va el NavBar... 
+</React.Fragment>
+```
+
+4. Luego incluya el llamado al componentes de **Navigation Bar** para adicionar el menú, Tenga presente que aqui el componente se cierra asi mismo, es decir no requiere **Tag** de Inicio ni **Tag** de fin. solo el llamado al componente.
 
 ```js
 <NavigationBar />
