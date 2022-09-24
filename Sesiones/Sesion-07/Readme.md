@@ -89,7 +89,7 @@ Esta definición de componentes las puede obtener en el sitio [react-Bootsrap](h
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Image, Navbar, Nav } from 'react-bootstrap';
+
 ```
 
 2. Modifique el contenido de la función **App** para incluir el menú de nuestra aplicación. para ello puede incluir la seccion **nav** desde el archivo **NavBar.html** que se encuentra en el directorio de **plantillas** de este repositorio o buscar el componente dentro de las librerias de react-bootstrap así:
@@ -98,7 +98,6 @@ import { Container, Image, Navbar, Nav } from 'react-bootstrap';
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-mport { Container, Image, Navbar, Nav } from 'react-bootstrap';
 
 function App() {
   return (
@@ -157,7 +156,7 @@ function App() {
               <Nav.Item><Nav.Link href="/Home">Home</Nav.Link></Nav.Item>
               <Nav.Item><Nav.Link href="/Users">Users</Nav.Link></Nav.Item>
             </Nav>
-            <Nav alignment="right">
+            <Nav className="justify-content-end" style={{ width: "100%" }}>
               <Nav.Item><Nav.Link href="/Login" >Login</Nav.Link></Nav.Item>
             </Nav>
           </Navbar.Collapse>        
