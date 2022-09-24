@@ -1,8 +1,13 @@
 # Usando React
-En esta sesión veremos la implementación de nuestros formularios utilizando la libreriá de REACT-JS y trabajaremos el CRUD de Usuarios tal como se realizo en el proyecto anterior pero ahora con este nuevo framework.
+En esta sesión veremos la implementación de nuestros formularios utilizando la libreriá de REACT-JS y trabajaremos el CRUD de Usuarios tal como se realizo en el proyecto anterior pero ahora con esta nuevo libreria.
 
 ## Requisitos
-1. Primero que todo necesitamos instalar [NodeJS](https://nodejs.org/es/).
+1. Primero que todo necesitamos instalar [NodeJS](https://nodejs.org/es/) e instaalar React
+
+^^^
+npm install -g react react-dom
+^^^
+
 2. Creamos una carpeta nueva, llamada **ReactWeb**, al mismo nivel de donde esta nuestro proyecto de **API**.
 
 ![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-01.png)
