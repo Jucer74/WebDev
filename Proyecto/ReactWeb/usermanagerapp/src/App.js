@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout';
-import { NoMatch } from './components/NoMatch';
-import { Home } from './components/Home';
-import { Login } from './components/Login';
-import { List } from './components/Users';
-import { NavigationBar } from './components/NavigationBar';
+import { NoMatch } from './elements/NoMatch';
+import { Home } from './elements/Home';
+import { Login } from './elements/Login';
+import { List } from './elements/Users';
+import { NavigationBar } from './elements/NavigationBar';
 
 function App() {
   return (
@@ -16,13 +16,13 @@ function App() {
         <NavigationBar />
         <Layout>
           <Router>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/Home" component={Home} />
-              <Route path="/Users" component={List} />
-              <Route path="/Login" component={Login} />
-              <Route component={NoMatch} />
-            </Switch>
+            <Routes>
+              <Route exact path="/" element={<Home/>} />
+              <Route path="/Home" element={<Home/>} />
+              <Route path="/Users" element={<Users/>} />
+              <Route path="/Login" element={<Login/>} />
+              <Route element={<NoMatch/>} />
+            </Routes>
           </Router>
         </Layout>
       </React.Fragment>
