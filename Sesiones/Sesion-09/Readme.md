@@ -151,7 +151,7 @@ curl -X GET "http://localhost:3000/Employees?_sort=lastName&order=DESC"
 
 8. Detenga el servicio en la ventan del servidor presionando las taclas **CTRL+C**
 
-# Autenticacion
+# Adicionar la Autenticacion
 
 1. Instalamos las librerias necesarias para generar e interpretar el **Bearer** Token.
 
@@ -160,32 +160,40 @@ npm install body-parser --save
 npm install jsonwebtoken --save
 ```
 
-2. Cree el archivo de usuarios **users.json** con los datos de usuarios registrads que pueden autenticarse, con el siguiente contenido:
+2. Ejecute de nuevo el comando **Fix** par completar las dependencias de los modulos utilizados y referenciados por el archivo **package.json** asi:
+
+```
+npm audit fix --force
+```
+
+y verifique que las dependencias refieran a las ultimas versiones de cada librerias en el archivo ***package.json** asi:
+
+```json
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "json-server": "^0.17.0",
+    "jsonwebtoken": "^8.5.1"
+  }
+```
+
+
+3. Cree el archivo de usuarios **users.json** con los datos de usuarios registrads que pueden autenticarse, con el siguiente contenido:
 
 ```json
 {
   "users": [
     {
       "id": 1,
-      "fistName": "System",
-      "lastName": "Administator",
       "email": "admin@email.com",
       "password": "P4ssw0rd*01"
-    },
-    {
-      "id": 1,
-      "fistName": "Julio",
-      "lastName": "Robles",
-      "email": "jrobles@email.com",
-      "password": "1234567890"
     }
   ]
 }
 ```
 
-3. Creamos un nuevo archivo llamado **server.js** e iremos adicionadole las instrucciones necesarias para activar el servidor json-server con autentication.
+4. Creamos un nuevo archivo llamado **server.js** e iremos adicionadole las instrucciones necesarias para activar el servidor json-server con autentication.
 
-4. Primero, comienza solicitando los módulos que necesitará usar, incluidos jsonwebtoken y json-server.
+5. Primero, comienza solicitando los módulos que necesitará usar, incluidos jsonwebtoken y json-server.
 
 ```js
 const fs = require('fs')
@@ -194,32 +202,32 @@ const jsonServer = require('json-server')
 const jwt = require('jsonwebtoken')
 ```
 
-5. A continuación, utilice el método create() para devolver un servidor Express
+6. A continuación, utilice el método create() para devolver un servidor Express
 
 ```js
 const server = jsonServer.create()
 ```
 
-6. Llame al método router() para devolver un enrutador Express
+7. Llame al método router() para devolver un enrutador Express
 
 ```js
 const router = jsonServer.router('./EmployeesDB.json')
 ```
 
-7. Ahora necesita leer y analizar el archivo de usarios (users.json) Este archivo actúa como una tabla para usuarios registrados.
+8. Ahora necesita leer y analizar el archivo de usarios (users.json) Este archivo actúa como una tabla para usuarios registrados.
 
 ```js
 const userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'))
 ```
 
-8. A continuación, defina algunas constantes: **SECRET_KEY** se usa para firmar las cargas útiles y **expiresIn** para configurar el tiempo de vencimiento de los tokens de acceso JWT.
+9. A continuación, defina algunas constantes: **SECRET_KEY** se usa para firmar las cargas útiles y **expiresIn** para configurar el tiempo de vencimiento de los tokens de acceso JWT.
 
 ```js
 const SECRET_KEY = '123456789'
 const expiresIn = '1h'
 ```
 
-9. A continuación, establezca middlewares predeterminados (registrador, estática, cors y sin caché)
+10. A continuación, establezca middlewares predeterminados (registrador, estática, cors y sin caché)
 
 ```
 server.use(bodyParser.urlencoded({extended: true}))
@@ -227,7 +235,7 @@ server.use(bodyParser.json())
 server.use(jsonServer.defaults());
 ```
 
-10. Adicione las siguietnes funciones
+11. Adicione las siguietnes funciones
 
 ```js
 // Create a token from a payload 
@@ -246,7 +254,7 @@ function isAuthenticated({email, password}){
 }
 ```
 
-11. Ahora necesita crear un punto final POST **/auth/login** que verifique si el usuario existe en la base de datos y luego crear y enviar un token JWT al usuario:
+12. Ahora necesita crear un punto final POST **/auth/login** que verifique si el usuario existe en la base de datos y luego crear y enviar un token JWT al usuario:
 
 ```js
 // Login to one of the users from ./users.json
@@ -266,7 +274,7 @@ server.post('/auth/login', (req, res) => {
 })
 ```
 
-12. A continuación, agregue un middleware Express que verifique que el encabezado de autorización tenga el esquema **Bearer** y luego verifique si el token es válido para todas las rutas, excepto la ruta anterior, ya que esta es la que usamos para iniciar la sesión de los usuarios.
+13. A continuación, agregue un middleware Express que verifique que el encabezado de autorización tenga el esquema **Bearer** y luego verifique si el token es válido para todas las rutas, excepto la ruta anterior, ya que esta es la que usamos para iniciar la sesión de los usuarios.
 
 ```js
 server.use(/^(?!\/auth).*$/,  (req, res, next) => {
@@ -295,7 +303,58 @@ server.use(/^(?!\/auth).*$/,  (req, res, next) => {
 })
 ```
 
-13. Finalmente, monte **json-server** y luego ejecute el servidor en el puerto **3000** usando:
+14. Ahora necesita crear un punto final POST **/auth/register** para registrar un nuevo usuario en la base de datos y luego poderlo ingresar para obtener EL token JWT al usuario: 
+
+
+```js
+// Register New User
+server.post('/auth/register', (req, res) => {
+  console.log("register endpoint called; request body:");
+  console.log(req.body);
+  const {email, password} = req.body;
+
+  if(isAuthenticated({email, password}) === true) {
+    const status = 401;
+    const message = 'Email and Password already exist';
+    res.status(status).json({status, message});
+    return
+  }
+
+  fs.readFile("./users.json", (err, data) => {  
+    if (err) {
+      const status = 401
+      const message = err
+      res.status(status).json({status, message})
+      return
+    };
+
+    // Get current users data
+    var data = JSON.parse(data.toString());
+
+    // Get the id of last user
+    var last_item_id = data.users[data.users.length-1].id;
+
+    //Add new user
+    data.users.push({id: last_item_id + 1, email: email, password: password}); //add some data
+    var writeData = fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
+        if (err) {
+          const status = 401
+          const message = err
+          res.status(status).json({status, message})
+          return
+        }
+    });
+  });
+
+  // Create token for new user
+  const access_token = createToken({email, password})
+  console.log("Access Token:" + access_token);
+  res.status(200).json({access_token})
+})
+
+```
+
+15. Finalmente, monte **json-server** y luego ejecute el servidor en el puerto **3000** usando:
 
 ```js
 server.use(router)
@@ -308,7 +367,7 @@ server.listen(3000, () => {
 
 Eso es todo, ahora tienes una API protegida. 
 
-14. Agreguemos dos scripts **npm** para ejecutar el servidor, agregando las siguientes lineas al archivo de **package.json**, antes de la seccion de **dependencies**.
+16. Agreguemos dos scripts **npm** para ejecutar el servidor, agregando las siguientes lineas al archivo de **package.json**, antes de la seccion de **dependencies**.
 
 ```json
   "scripts": {
@@ -319,8 +378,30 @@ Eso es todo, ahora tienes una API protegida.
 ```
 Guarde todos sus cambios y ahora si ejecutemos el servidor 
 
-15. Vuelva a la ventana de consola o terminal y ejecute el siguiente comando:
+17. Vuelva a la ventana de consola o terminal y ejecute el siguiente comando:
 
 ```
 npm run start-auth
 ```
+
+# Autenticarse
+Utilizando **PostMan** oo cualquier otra herramientoq eu permita hacer el llamado tipo **REST** realice los siguientes pasos:
+
+1. Ejecute el llamdo POST al endpoint auth/login, pasando los datos del usario asi:
+
+```json
+{
+    "email": "admin@email.com",
+    "password": "P4ssw0rd*01"
+}
+```
+
+Si todo esta correctamente configurado, deberia obtener una respuesta como la siguiente:
+
+```json
+{
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGVtYWlsLmNvbSIsInBhc3N3b3JkIjoiUDRzc3cwcmQqMDEiLCJpYXQiOjE2NjQ2NTE0NjIsImV4cCI6MTY2NDY1NTA2Mn0.JqyqLFS7bccMy3EJAsnvo09nII_Fmon210_0Gh5J9lY"
+}
+```
+
+2. Utilizando el access token obtenido realice el llamado al metodo GET de todos los empleados, adicionando la autorizacion 
