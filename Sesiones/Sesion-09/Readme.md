@@ -208,33 +208,119 @@ const router = jsonServer.router('./EmployeesDB.json')
 
 7. Ahora necesita leer y analizar el archivo de usarios (users.json) Este archivo actúa como una tabla para usuarios registrados.
 
-```
+```js
 const userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'))
 ```
 
 8. A continuación, defina algunas constantes: **SECRET_KEY** se usa para firmar las cargas útiles y **expiresIn** para configurar el tiempo de vencimiento de los tokens de acceso JWT.
 
-```
+```js
 const SECRET_KEY = '123456789'
 const expiresIn = '1h'
 ```
 
-9. O también puede agregar su propia configuración. (en este caso utilizaremos sonlo el paso anterior de default)
+9. A continuación, establezca middlewares predeterminados (registrador, estática, cors y sin caché)
 
 ```
 server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json())
-```
-
-10. A continuación, establezca middlewares predeterminados (registrador, estática, cors y sin caché)
-
-```
 server.use(jsonServer.defaults());
 ```
 
-11. Adicione las siguietnes funciones
+10. Adicione las siguietnes funciones
+
+```js
+// Create a token from a payload 
+function createToken(payload){
+  return jwt.sign(payload, SECRET_KEY, {expiresIn})
+}
+
+// Verify the token 
+function verifyToken(token){
+  return  jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ?  decode : err)
+}
+
+// Check if the user exists in database
+function isAuthenticated({email, password}){
+  return userdb.users.findIndex(user => user.email === email && user.password === password) !== -1
+}
+```
+
+11. Ahora necesita crear un punto final POST **/auth/login** que verifique si el usuario existe en la base de datos y luego crear y enviar un token JWT al usuario:
+
+```js
+// Login to one of the users from ./users.json
+server.post('/auth/login', (req, res) => {
+  console.log("login endpoint called; request body:");
+  console.log(req.body);
+  const {email, password} = req.body;
+  if (isAuthenticated({email, password}) === false) {
+    const status = 401
+    const message = 'Incorrect email or password'
+    res.status(status).json({status, message})
+    return
+  }
+  const access_token = createToken({email, password})
+  console.log("Access Token:" + access_token);
+  res.status(200).json({access_token})
+})
+```
+
+12. A continuación, agregue un middleware Express que verifique que el encabezado de autorización tenga el esquema **Bearer** y luego verifique si el token es válido para todas las rutas, excepto la ruta anterior, ya que esta es la que usamos para iniciar la sesión de los usuarios.
+
+```js
+server.use(/^(?!\/auth).*$/,  (req, res, next) => {
+  if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
+    const status = 401
+    const message = 'Error in authorization format'
+    res.status(status).json({status, message})
+    return
+  }
+  try {
+    let verifyTokenResult;
+     verifyTokenResult = verifyToken(req.headers.authorization.split(' ')[1]);
+
+     if (verifyTokenResult instanceof Error) {
+       const status = 401
+       const message = 'Access token not provided'
+       res.status(status).json({status, message})
+       return
+     }
+     next()
+  } catch (err) {
+    const status = 401
+    const message = 'Error access_token is revoked'
+    res.status(status).json({status, message})
+  }
+})
+```
+
+13. Finalmente, monte **json-server** y luego ejecute el servidor en el puerto **3000** usando:
+
+```js
+server.use(router)
+
+server.listen(3000, () => {
+  console.log('Run Auth API Server')
+})
 
 ```
-```
 
-12. a
+Eso es todo, ahora tienes una API protegida. 
+
+14. Agreguemos dos scripts **npm** para ejecutar el servidor, agregando las siguientes lineas al archivo de **package.json**, antes de la seccion de **dependencies**.
+
+```json
+  "scripts": {
+    "start": "json-server --watch ./db.json",
+    "start-auth": "node server.js"
+  },
+
+```
+Guarde todos sus cambios y ahora si ejecutemos el servidor 
+
+15. Vuelva a la ventana de consola o terminal y ejecute el siguiente comando:
+
+```
+npm run start-auth
+```
