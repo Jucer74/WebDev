@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using RestSharp;
-using System.Net;
-
+using WebDev.Services.Dtos;
 
 namespace EmployeesWeb.Services
 {
@@ -16,37 +16,45 @@ namespace EmployeesWeb.Services
          _restClient = new RestClient();
       }
 
-      public async Task<TokenDto> ValidUser(LoginDto login)
+      public async Task<AuthorizationDto> ValidUser(LoginDto login)
       {
-         TokenDto tokenDtoResponse = null;
-
          // Assign the URL
-         _restClient.BaseUrl = new Uri($"{BaseUrl}/login");
-
-         // Wait until to get a response
-         _restClient.Timeout = -1;
+         var targetUrl = new Uri($"{BaseUrl}/auth/login");
 
          // Assign the Method Type
-         var request = new RestRequest(Method.POST);
+         var request = new RestRequest(targetUrl, Method.Post);
 
          // Assign the Body
-         var content = JsonConvert.SerializeObject(login);
+         var content = SerializeContentToJsonString(login);
          request.AddParameter("application/json", content, ParameterType.RequestBody);
 
          // Execute the Call
-         IRestResponse response = await _restClient.ExecuteAsync(request);
+         RestResponse response = await _restClient.ExecuteAsync(request);
+
+         // If there was a communication error the content is empty
+         // otherwise the content could be success or error response
+         var responseData = response.Content??String.Empty;
 
          // Checking the response is successful or not which is sent using HttpClient
-         if (response.StatusCode == HttpStatusCode.OK)
+         if (!response.IsSuccessful || !response.IsSuccessStatusCode)
          {
-            // Storing the content response recieved from web api
-            var responseContent = response.Content;
+            if (response.ErrorException is not null)
+            {
+               throw response.ErrorException;
+            }
 
-            //Deserializing the response recieved from web api and storing into the Employee list
-            tokenDtoResponse = JsonConvert.DeserializeObject<TokenDto>(responseContent);
+            throw new ApplicationException($"Error: {responseData}");
          }
 
-         return tokenDtoResponse;
+         // Deserializing the response recieved from web api and storing into the Employee list
+         AuthorizationDto authorizationDto = JsonConvert.DeserializeObject<AuthorizationDto>(responseData);
+
+         return authorizationDto;
+      }
+
+      private string SerializeContentToJsonString(object content)
+      {
+         return JsonConvert.SerializeObject(content, new JsonSerializerSettings() {  ContractResolver= new CamelCasePropertyNamesContractResolver() });
       }
    }
 }

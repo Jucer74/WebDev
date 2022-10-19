@@ -1,19 +1,25 @@
-﻿using EmployeesWeb.Application.Models;
+﻿using EmployeesWeb.Application.Mappers;
+using EmployeesWeb.Application.Models;
+using EmployeesWeb.Services;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Diagnostics;
 
 namespace EmployeesWeb.Application.Controllers
 {
    public class HomeController : Controller
    {
-
+      private readonly LoginService loginService;
       public HomeController(IConfiguration configuration)
       {
-         
+         var baseUrl = configuration["ApiConfiguration:BaseUrl"].ToString();
+         loginService = new LoginService(baseUrl);
       }
 
       public IActionResult Index()
       {
+         ViewData["IsUserLogged"] = HttpContext.Session.GetString("IsUserLogged");
+         ViewData["User"] = HttpContext.Session.GetString("User");
          return View();
       }
 
@@ -66,15 +72,15 @@ namespace EmployeesWeb.Application.Controllers
 
       private async Task<bool> IsValidUser(Login login)
       {
-         var tokenDto = await loginService.ValidUser(LoginMapper.ToDto(login));
-         if (tokenDto == null)
+         var autorizationDto = await loginService.ValidUser(LoginMapper.ToDto(login));
+         if (autorizationDto == null)
          {
             HttpContext.Session.SetString("IsUserLogged", "false");
             return false;
          }
          HttpContext.Session.SetString("IsUserLogged", "true");
-         HttpContext.Session.SetString("User", tokenDto.Name);
-         HttpContext.Session.SetString("TokenData", JsonConvert.SerializeObject(TokenMapper.ToEntity(tokenDto)));
+         HttpContext.Session.SetString("User", login.Email);
+         HttpContext.Session.SetString("AccessToken", JsonConvert.SerializeObject(autorizationDto.AccessToken));
 
          return true;
       }
