@@ -1,8 +1,13 @@
 # Usando React
-En esta sesión veremos la implementación de nuestros formularios utilizando la libreriá de REACT-JS y trabajaremos el CRUD de Usuarios tal como se realizo en el proyecto anterior pero ahora con este nuevo framework.
+En esta sesión veremos la implementación de nuestros formularios utilizando la libreriá de REACT-JS y trabajaremos el CRUD de Usuarios tal como se realizo en el proyecto anterior pero ahora con esta nuevo libreria.
 
 ## Requisitos
-1. Primero que todo necesitamos instalar [NodeJS](https://nodejs.org/es/).
+1. Primero que todo necesitamos instalar [NodeJS](https://nodejs.org/es/) e instalar React
+
+```
+npm install -g react react-dom
+```
+
 2. Creamos una carpeta nueva, llamada **ReactWeb**, al mismo nivel de donde esta nuestro proyecto de **API**.
 
 ![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-01.png)
@@ -43,8 +48,7 @@ En este punto puede cerrar el navegador para continuar.
 Para los Estilos y los componentes
 
 ```
-npm install -save bootstrap 
-npm install -save react-bootstrap
+npm install react-bootstrap bootstrap
 ```
 
 Para las Ventanas Modales
@@ -64,19 +68,10 @@ Para los llamados a la API
 npm install -save axios
 ```
 
-Para los Iconos usaremos Font Awesome
+Para los Iconos usaremos Bootstrap Icons
 
 ```
-npm install -save @fortawesome/fontawesome-svg-core
-npm install -save @fortawesome/free-solid-svg-icons
-npm install -save @fortawesome/react-fontawesome
-```
-
-Para el manejo de las tablas usaremos Datatables
-
-```
-npm install -save datatables.net-dt
-npm install -save jquery
+npm install --save react-bootstrap-icons 
 ```
 
 
@@ -94,7 +89,7 @@ Esta definición de componentes las puede obtener en el sitio [react-Bootsrap](h
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Image, Navbar, Nav } from 'react-bootstrap';
+
 ```
 
 2. Modifique el contenido de la función **App** para incluir el menú de nuestra aplicación. para ello puede incluir la seccion **nav** desde el archivo **NavBar.html** que se encuentra en el directorio de **plantillas** de este repositorio o buscar el componente dentro de las librerias de react-bootstrap así:
@@ -161,7 +156,7 @@ function App() {
               <Nav.Item><Nav.Link href="/Home">Home</Nav.Link></Nav.Item>
               <Nav.Item><Nav.Link href="/Users">Users</Nav.Link></Nav.Item>
             </Nav>
-            <Nav alignment="right">
+            <Nav className="ms-auto">
               <Nav.Item><Nav.Link href="/Login" >Login</Nav.Link></Nav.Item>
             </Nav>
           </Navbar.Collapse>        
@@ -210,7 +205,7 @@ export const Users = () => (
 ```
 
 ### La página de No coincidencias
-Cree un nuevo archivo llamado **Users.js** y asignele el siguiente contenido:
+Cree un nuevo archivo llamado **NoMatch.js** y asignele el siguiente contenido:
 
 ```js
 import React from 'react';
@@ -237,13 +232,15 @@ export const NavigationBar = () => (
           <Nav.Item><Nav.Link href="./Home">Home</Nav.Link></Nav.Item>
           <Nav.Item><Nav.Link href="/Users">Users</Nav.Link></Nav.Item>
         </Nav>
-        <Nav alignment="right">
+        <Nav className="ms-auto">
           <Nav.Item><Nav.Link href="/Login" >Login</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>        
     </Navbar>
   </Container>
 )
+
+
 ```
 
 ## La pagina de Layout
@@ -269,7 +266,7 @@ Ahora en nuestro archivo de aplicacion (**App.js**)  vamos a realizar el manejo 
 1. Incluya el enrutador
 
 ```js
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 ```
 En este caso identifique el el componente **BrouwserRouter** se idndentificara ahora con el alias de **Router**, lo que lo hace mas sencillo de identificar.
 
@@ -281,13 +278,19 @@ import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
-import { List } from './components/Users';
+import { Users } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
 ```
 
-3. Utilice el componente **React.Fragment** para renderizar el codigo en su enterior.
+3. Vamos a utilizar el componente **React.Fragment** para renderizar el Navigation bar su enterior. Por ahora solo tengalo presente ya que este componente lo usaremos mas adelante.
 
-4. Luego incluya el llamado al componentes de **Navigation Bar** para adicinar el menú, Tenga presente que aqui el componente se cierra asi mismo, es decir no requiere **Tag** de Inicio ni **Tag** de fin. solo el llamado al componente.
+```
+<React.Fragment>
+ .... Aqui Va el NavBar... 
+</React.Fragment>
+```
+
+4. Luego incluya el llamado al componentes de **Navigation Bar** para adicionar el menú, Tenga presente que aqui el componente se cierra asi mismo, es decir no requiere **Tag** de Inicio ni **Tag** de fin. solo el llamado al componente.
 
 ```js
 <NavigationBar />
@@ -297,13 +300,13 @@ import { NavigationBar } from './components/NavigationBar';
 
 ```js
 <Router>
- <Switch> 
-   <Route exact path="/" component={Home} />
-   <Route path="/Home" component={Home} />
-   <Route path="/Users" component={List} />
-   <Route path="/Login" component={Login} />
-   <Route component={NoMatch} />
- </Switch>
+ <Routes> 
+	  <Route exact path="/" element={<Home/>} />
+	  <Route path="/Home" element={<Home/>} />
+	  <Route path="/Users" element={<Users/>} />
+	  <Route path="/Login" element={<Login/>} />
+	  <Route element={<NoMatch/>} />
+ </Routes>
 </Router>
 ```
 
@@ -317,12 +320,12 @@ Integrando todo tenemos lo siguiente:
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
-import { List } from './components/Users';
+import { Users } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
 
 
@@ -333,13 +336,13 @@ function App() {
         <NavigationBar />
         <Layout>
           <Router>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/Home" component={Home} />
-              <Route path="/Users" component={Users} />
-              <Route path="/Login" component={Login} />
-              <Route component={NoMatch} />
-            </Switch>
+            <Routes>
+              <Route exact path="/" element={<Home/>} />
+              <Route path="/Home" element={<Home/>} />
+              <Route path="/Users" element={<Users/>} />
+              <Route path="/Login" element={<Login/>} />
+              <Route element={<NoMatch/>} />
+            </Routes>
           </Router>
         </Layout>
       </React.Fragment>

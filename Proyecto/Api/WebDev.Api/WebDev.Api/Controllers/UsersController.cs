@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-﻿using Microsoft.AspNetCore.Mvc;
-=======
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
->>>>>>> 66691986c00aa6cb878ccc1812523137c22593e1
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +22,7 @@ namespace WebDev.Api.Controllers
 
     // GET: api/Users
     [HttpGet]
-<<<<<<< HEAD
-=======
-    //[Authorize]
->>>>>>> 66691986c00aa6cb878ccc1812523137c22593e1
+    [Authorize]
     public async Task<ActionResult<IEnumerable<User>>> GetUsers()
     {
       return await _context.Users.ToListAsync();
@@ -37,10 +30,7 @@ namespace WebDev.Api.Controllers
 
     // GET: api/Users/5
     [HttpGet("{id}")]
-<<<<<<< HEAD
-=======
-    //[Authorize]
->>>>>>> 66691986c00aa6cb878ccc1812523137c22593e1
+    [Authorize]
     public async Task<ActionResult<User>> GetUser(int id)
     {
       var user = await _context.Users.FindAsync(id);
@@ -53,30 +43,24 @@ namespace WebDev.Api.Controllers
       return user;
     }
 
-<<<<<<< HEAD
-=======
     // POST: api/Users
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
     [HttpPost]
-    //[Authorize] 
-    public async Task<ActionResult<User>> PostUser(User user)
+    [Authorize] 
+    public async Task<ActionResult<UserIdResponse>> PostUser(User user)
     {
       _context.Users.Add(user);
       await _context.SaveChangesAsync();
 
-      return Created(string.Empty, new { id = user.Id });
+      return Created(string.Empty, new UserIdResponse { Id = user.Id });
     }
 
->>>>>>> 66691986c00aa6cb878ccc1812523137c22593e1
     // PUT: api/Users/5
     // To protect from overposting attacks, enable the specific properties you want to bind to, for
     // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
     [HttpPut("{id}")]
-<<<<<<< HEAD
-=======
-    //[Authorize]
->>>>>>> 66691986c00aa6cb878ccc1812523137c22593e1
+    [Authorize]
     public async Task<IActionResult> PutUser(int id, User user)
     {
       if (id != user.Id)
@@ -105,27 +89,10 @@ namespace WebDev.Api.Controllers
       return NoContent();
     }
 
-<<<<<<< HEAD
-    // POST: api/Users
-    // To protect from overposting attacks, enable the specific properties you want to bind to, for
-    // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-    [HttpPost]
-    public async Task<ActionResult<User>> PostUser(User user)
-    {
-      _context.Users.Add(user);
-      await _context.SaveChangesAsync();
-
-      return CreatedAtAction("GetUser", new { id = user.Id }, user);
-    }
 
     // DELETE: api/Users/5
     [HttpDelete("{id}")]
-=======
-
-    // DELETE: api/Users/5
-    [HttpDelete("{id}")]
-    //[Authorize] 
->>>>>>> 66691986c00aa6cb878ccc1812523137c22593e1
+    [Authorize] 
     public async Task<ActionResult<User>> DeleteUser(int id)
     {
       var user = await _context.Users.FindAsync(id);
@@ -137,11 +104,7 @@ namespace WebDev.Api.Controllers
       _context.Users.Remove(user);
       await _context.SaveChangesAsync();
 
-<<<<<<< HEAD
-      return user;
-=======
       return NoContent();
->>>>>>> 66691986c00aa6cb878ccc1812523137c22593e1
     }
 
     private bool UserExists(int id)
