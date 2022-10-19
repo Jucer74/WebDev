@@ -1,4 +1,4 @@
-# Uso de Json Web Token (JWT)
+# Autenticacion con Json Web Token (JWT)
 para facilitar el proceso de autenticacion utilizaremos la libreria de json-server que permite crear un servidor virtual que soporte todos los metodos de tipo REST.
 
 ## Pasos
