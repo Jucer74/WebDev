@@ -10,7 +10,7 @@ npm install -g react react-dom
 
 2. Creamos una carpeta nueva, llamada **ReactWeb**, al mismo nivel de donde esta nuestro proyecto de **API**.
 
-![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-01.png)
+![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07-ReactWeb/ReactWeb-01.png)
 
 3. En una terminal o ventana de comandos navegamos hasta esta carpeta (ReactWeb) y ejecutamos el siguiente comando para crear nuestra aplicación React.
 
@@ -28,15 +28,15 @@ code .
 ```
 5. Dentro de Visual Studio Code, abrimos una nueva terminal , para ello vamos a la opción **Terminal** del menu y escogemos la opción de **New Terminal**.
 
-![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-02.png)
+![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07-ReactWeb/ReactWeb-02.png)
 
 6. En esta nueva ventana ejecutamos el comando **npm start** para iniciar nuestra aplicación 
 
-![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-03.png)
+![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07-ReactWeb/ReactWeb-03.png)
 
 7. si todo quedo funcionando corectamente usted podra ver una ventana con el logo de React, con una aplicación ejecutandose sobre **http://localhost:3000**.
 
-![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-04.png)
+![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07-ReactWeb/ReactWeb-04.png)
 
 **Nota:**
 Puede consultar mas información sobre la creación de una aplicacion react enel proyecto [create-react-app](https://github.com/facebook/create-react-app).
@@ -130,7 +130,7 @@ export default App;
 
 3. Ejecute de nuevo la aplicación con **npm start** en la linea de comandos y verifique su funcionamiento.
 
-![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07/ReactWeb-05.png)
+![ReactWeb](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-07-ReactWeb/ReactWeb-05.png)
 
 Con esto vemos que podemos utilizar cualquier componente **HTML** que sea modifque con **Bootstrap** directamente en un aplicación **React**.
 

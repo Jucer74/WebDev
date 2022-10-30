@@ -1,26 +1,26 @@
 # Services
 En esta sección veremos como desacoplar nuestra aplicacion, delegando la responsabilidad del llamado del a API a una libreria de servicos que se encargara de dicha operacion. Para entender mejor este concepto miremos la siguiente imagen.
 
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-01.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-01.png)
 
 # Librería de Servicios
 1. Seleccionamos el icono de la solución y hacemos click derecho. en el menú flotante escogemos la opción Add y luego **New Project**.
 
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-02.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-02.png)
 
 2. Cambiamos el tipo por **Library** y filtramos usando las palabras **Class Library** y del listado seleccionamos la que referencia a **Class Library .Net Core**
 
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-03.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-03.png)
 
 Asegurse de que sea **.Net Core** para evitar incompatibilidades
 
 3. Asignele el Nombre de **WebDev.Services** y segurese de estarlo creando en el mismo directorio donde esta toda la aplicación.
 
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-04.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-04.png)
 
 4. Cambie el Nombre del archivo **Class1.cs** a **UsersService.cs**, haciendo click derecho sobre el archivo y selecionando renombrar (Rename)
 
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-05.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-05.png)
 
 5. Ahora vamos a adicionar cambios en la configuracion de nuestro Sitio web para poder configurar la Url de nuestra API de Usuarios. para ellos vamos a agregar una nueva seccion en el archivo de **appsettings.json** asi:
 
@@ -42,7 +42,7 @@ Asegurse de que sea **.Net Core** para evitar incompatibilidades
 ```
 6. Adicionamos un nuevo folder llamado **Config** y dentro una nueva clase llamada **ApiConfiguration.cs**, para poder almacenar los datos de esta nueva Sección.
 
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-06.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-06.png)
 
 Le asignamos el siguiente contenido:
 
@@ -62,12 +62,12 @@ Con esto dejamos preparados los datos necesarios para cargar las Url de nuestras
 
 7. Referenciamos nuestro proyecto de servicios dentro de nuestro sitio haciendo click derecho sobre Dependencies y seleccionado la opción **Add Project Reference...**
 
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-07.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-07.png)
 
 
 8. Seleccione el proyecto **WebDev.Services** y acepte los cambios.
  
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-08.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-08.png)
 
 
 9. Ahora adicionaremos la lectura de la nueva sección, haciendo llamado al servicio de Configure en la clase **Startup**, en el método de **ConfigureServices** , para ello necesitamos incluir el llamado al modelo y luego la carga de la configuración, asi que ejecutaremos los siguientes pasos:
@@ -135,7 +135,7 @@ public UsersService(string baseUrl)
 
 13. Adicionamos un Folder llamado **Entities** y creamos una nueva clase llamada **UserDto.cs**, que basicamente es igual al contenido de nuestra clase del modelo de la aplicacion.
 
-![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05/Services-09.png)
+![Services](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-05-Services/Services-09.png)
 
 ```csharp
 namespace WebDev.Services.Entities

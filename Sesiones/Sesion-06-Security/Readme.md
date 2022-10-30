@@ -30,11 +30,11 @@ namespace WebDev.Application.Models
 ```
 3. Ahora adicionemos la vista correspondinete al modelo, para ello vamos a la carpeta de **Views** y dentro en el directorio de **Home**, hacemos click derecho escogemos **Add** y luego **View...** y adicionamos una nueva vista, la cual llamaremos **Login**.
 
-![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06/Security-01.png)
+![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06-Security/Security-01.png)
 
 4 Seleccionamos la plantilla de **Razor View** y llenamos los datos de creacion con los siguientes valores:
 
-![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06/Security-02.png)
+![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06-Security/Security-02.png)
 
 	- **View name:** Login
 	- **Template:** Create
@@ -141,7 +141,7 @@ private async Task<bool> IsValidUser(string email, string password)
 - Del Menu contextual escogemos **Add** y luego **View...** y escogemos la plantilla de **Razor View**.
 - Ahora procederemos a llenar los datos asi:
 
-![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06/Security-03.png)
+![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06-Security/Security-03.png)
 
 **View name:** _Loginpartial
 **Template:** Create
@@ -246,7 +246,7 @@ Con esto controlamos el Acceso a la aplicación  a la opción de usuarios.
 
 - Adicione el siguiente nuget. (recuerde que esta opción se ejecuta haciendo click derecho sobre el nodo de **Dependencies**)
 
-![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06/Security-04.png)
+![Security](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-06-Security/Security-04.png)
 
 - Busque y adicione paquete de manejo de Sesiones (**Microsoft.AspNetCore.Session**)
 

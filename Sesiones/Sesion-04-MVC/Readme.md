@@ -8,7 +8,7 @@ El patrón de arquitectura de **Modelo-View-Controller** (MVC) divide una aplica
 Las vistas y los controladores juntos controlan la interfaz con el usuario. 
 El mecanismo de cambio-propagación asegura la consistencia de la interfaz con el modelo.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-01.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-01.png)
 
 Es importante tener en cuenta que la petición es recibida por el controlador, el cual realiza la demanda del modelo y obtiene los datos, los mezcla con la vista y la retorna al navegador.
 
@@ -19,31 +19,31 @@ Vamos a crear un nuevo proyecto de tipo MVC para enlazar el llamado a la API.
 
 1. Abrimos Visual Studio y creamos un nuevo proyecto. En este caso seleccionaremos el tipo **Blank Solution**.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-02.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-02.png)
 
 3. Seleccionamos el directorio (Proyecto) y llamaremos el proyecto como **WebDev**.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-03.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-03.png)
 
 4. Adicionaremos un nuevo proyecto haciendo click derecho sobre la raiz de la solución.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-04.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-04.png)
 
 5. Seleccionaremos el tipo **ASP .Net Core Web Application**
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-05.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-05.png)
 
 6. Le asignamos el nombre WebDev.Application
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-06.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-06.png)
 
 7. Seleccionamos el template **Web Application (Model-View-Controller)**. 
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-07.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-07.png)
 
 8. Adicionaremos un nuevo modelo que refleje los datos a utilizar. Para ello adicionaremos una clase llamada **User** a la carpeta Models, haciendo click derecho sobre dicho folder.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-08.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-08.png)
 
 Ahora establecemos el modelo con los datos correspondientes así:
 
@@ -70,15 +70,15 @@ namespace WebDev.Application.Models
 
 9. Adicione un nuevo controlador haciendo click derecho sobre el folder de **Controllers**
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-09.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-09.png)
 
 10. Seleccione la plantilla **MVC Controller with read/write actions**
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-10.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-10.png)
 
 11. Asigne el nombre **UsersController.cs** a la nueva clase que se genera.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-11.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-11.png)
 
 12. Adicione el llamado al nuevo controlador modificando la clase **Startup**, adicionando un nuevo **EndPoint** con las siguientes lineas en la function **Configure**.
 
@@ -126,22 +126,22 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 13. Volvemos al controlador y hacemos click derecho sobre Action **Index** para que adicionemos la vista correspondiente, seleccionando la opcion **Add View...**
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-12.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-12.png)
 
 14. Seleccionamos el tipo **Razor View**
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-13.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-13.png)
 
 15. Complete los datos:
 	- **View name:** Index
 	- **Template:** List
 	- **Model class:** User (WebDev.Application.Models)  
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-14.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-14.png)
 
 Esta accion adiciona un nuevo folder llamado **Users** dentro del nodo de **Views** e internamente se crea la vista definida **Index.cshtml**.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-15.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-15.png)
 
 16. Volvemos al Controlador y vamos a simular la respuesta para validar nuestra ejecución, así:
 
@@ -196,7 +196,7 @@ d. Modifiquemos la vista principal **_Layout.cshtml** que se encuetnra dentro de
 
 e. Ejecute la aplicación presionando **F5** y valide los resultados, redireccionando de la ruta **/Users**.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-16.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-16.png)
 
 En este punto podemos aplicar los cambios aprendidos en la sesión anterior y mejorar nuestra vista, de la siguiente forma
 
@@ -267,14 +267,14 @@ En este punto podemos aplicar los cambios aprendidos en la sesión anterior y me
 ```
 17. Con esto podemos mejorar la presentación de nuestra tabla usando los componentes de Bootstrap que ya estan instalados por defecto en la aplicacion y que son inicializados en el formulario de **_Layout.cshtml**.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-17.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-17.png)
 
 ## Las otras Acciones
 Ahora vamos a implementar la demas acciones para completar el CRUD. Iniciaremos por la opción de **Create New**.
 
 En el controlador y sobre cada uno de los metodos, presione click derecho y escoja la opción **Add View...**, esto le dara como resultado que se agregaran las vistas por cada acción. Tenga presente el seleccionar siempre el Template correspondiente a la Acción que esta creando, es decir, si esta adicionando la Vista para **Details**, el template seleccionado debe ser el de **Details** y asi para todos los casos, ademas, debe estar seguro siempre de seleccionar el mismo modelo de **User** y no otro porque se pueden generar errores. En caso de que esto ultimo suceda, lo que debe hacer es borrar el archivo resultante de la carpeta de **Views** y volver a generar. Al finalizar usted tendra algo como lo siguiente, en la carpeta de **Views**. 
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-18.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-18.png)
 
 Ahora pasaremos a realizar las modificaciones sobre cada accion, dentro del controlador y sobre la vista, segun corresponda.
 
@@ -605,7 +605,7 @@ c. al final del arhivo de la vista adicione las siguientes lineas:
 
 Vuelva a ejecutar el proyecto y valide los cambios.
 
-![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04/MVC-19.png)
+![MVC](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-04-MVC/MVC-19.png)
 
 Note que ahora tiene varias nuevas funcionalidades, paginación automática, cantidad de registros, ordenamiento por cualquier columna y busqueda rapida sobre los registros.  
 

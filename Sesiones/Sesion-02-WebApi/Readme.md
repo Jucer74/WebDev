@@ -6,15 +6,15 @@ Utilizando **Visual Studio 2019** vamos a crear la API para poder efectuar las a
 
 **2.** En el lenguaje filtre por **C#**, en los tipos de proyectos filtre por **Web** y seleccione la pantilla **ASP.NET Core Web Application**.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-01.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-01.png)
 
 **3.** Asigne el nombre **WebDev.Api** para el proyecto y en la ruta escoja el directorio **Proyecto/Api** y presione el boton de **Create**.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-02.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-02.png)
 
 **4.** Seleccione el tipo de proyecto, en este caso **API**
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-03.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-03.png)
 
 
 ## Sincronizar
@@ -26,15 +26,15 @@ Ahora vamos a pasar a referencia el Modelo, que es la representación de la tabl
 
 **1.** A nivel del proyecto cree la carpeta **Model**, esto lo puede hacer seleccionado el nodo principal del proyecto **WebDeb.Api** y haciendo click derecho seleccionar **Add/Folder** del menú flotante.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-04.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-04.png)
 
 **2.** En la Nueva carpeta **Model** haga click derecho y selecciona **Add/Class**.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-05.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-05.png)
 
 **3.** Cambio el nombre de la clase a **User**, en este caso en singular ya que va a hacer referencia a un elemento de la tabla de Users a la vez.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-06.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-06.png)
 
 **4.** Complemente la clase de la siguiente forma:
 
@@ -68,35 +68,35 @@ Se debe terne presente que el nombre de los campos deben ser exactamente iguales
 Ahora adicionemos el contexto que es la representacion de lo que podria ser la base de datos, es decir se crean estructuras se Set de datos de los tipos definidos en el modelo, ademas de identificar la cadena de conexión y el tipo de base de datos que vamos usar. para ello ejecutemos los siguientes pasos:
 
 **1.** Adicionemos uns nueva carpeta llamada Context a nuestro proyecto, de igual forma como hicimos la del modelo.
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-07.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-07.png)
 
 **2.** Sobre esta nueva carpeta adicionamos una nueva clase 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-08.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-08.png)
 
 **3.** Le asignamos el nombre de **AppDbContext**.
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-09.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-09.png)
 
 **4.** En este punto y antes de entrar a complementar el Contexto vamos a instalar el Entity Framework Core, que es la libreria que nos permite mapear de forma directa el modelo con los objetos de la base de datos. Para ello ejecutaremos los siguientes pasos:
 
 **a.** Sobre el Proyecto en la sección de **Dependencies** hacemos click derecho y en el menú flotante seleccionamos la opción **Manage NuGet Packages...**
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-10.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-10.png)
 
 **b.** En el administrador seleccionamos la opcion **Browse** y en la barra de busqueda escribimos **Entity Framework Core (EF)**. en los resultados de la busqueda seleccionamos la opción correspondiente en el panel derecho presionamos el botón de **install**. 
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-11.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-11.png)
 
 **c.** Confirme la lista de componentes a descargar e instalar.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-12.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-12.png)
 
 **d.** Acepte la licencia Open Source de instalación y espere a que el proceso finalice.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-13.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-13.png)
 
 **e.** Al finalizar debe obtener una respuesta similar a esta, sin reporte de errores, para garantizar que todo quedo bien instalado.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-14.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-14.png)
 
 **5.** Ahora procedemos a complementar la clase **AppDbContext** de la siguiente manera:
 
@@ -181,7 +181,7 @@ Al final tenemos algo como lo siguiente:
 
 4. Para hacer uso de la conexion a la base de datos SQL Server debemos importar el NuGet correspondiente, en este caso instalamos **Microsoft.EntityFrameworkCore.SqlServer**, lo hacemos de igual forma como instalamos el Entity Framework Core.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-15.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-15.png)
 
 5. Ahora referenciemos la cadena de conexion dentro de los servicios de la aplicación, para ello modificaremos la clase **StartUp**
 
@@ -214,19 +214,19 @@ Ahora pasaremos a crear el controlador para poder acceder a los servicios propio
 
 **1.** Seleccione la carpeta de **Controllers** haciendo click derecho, y escogiendo la opción de **Add/Controller...**
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-16.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-16.png)
 
 **2.** Ahora seleccionaremos el tipo de Controller que necesitamos, en este caso será: **API Controller with actions, using Entity Framework**
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-17.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-17.png)
 
 3. Ahora seleccionamos nuestra clase del Modelo (**User**), la clase del contexto (**AppDbContext**) y validamos que se construye el nombre **UsersController** en el nombre del controlador. 
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-18.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-18.png)
 
 Tenga presente que el controlador siempre deberá llevar la palabra Controller al final, ya que esta es la forma en como .Net lo referencia internamente.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-19.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-19.png)
 
 De esta forma ya hemos creado un nuevo controlador con todas las operaciones necesarias para interactuar con la base de datos.
 
@@ -359,7 +359,7 @@ Ahora vamos a cambiar nuestro proyecto para que al iniciar tome por defecto nues
 
 **1.** Selecciona el archivo **launchSettings.json** que esta dentro de la carpeta **Properties**.
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-20.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-20.png)
 
 **2.** Reemplace todas las referencias a **weatherforecast** por el nuevo controlador, en nuestro caso seria **api/users**, al final tendríamos algo como lo siguiente:
 
@@ -403,7 +403,7 @@ Para validar que todo esta funcionando correctamente ejecutaremos el proyecto, p
 
 En este punto debemos ver algo parecido a esto:
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-21.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-21.png)
 
 Asi podemos ver la lista de todos los usuarios que tenemos en la tabla de nuestra base de datos.
 
@@ -435,7 +435,7 @@ Para facilitar el proceso de pruebas de todas las acciones, adicionaremos el ser
 
 1. Adicionaremos el NuGet que nos permite adicionar los servicios de Swagger en este caso usaremos **Swashbuckle.AspNetCore**
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-22.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-22.png)
 
 2. Ahora configuraremos la aplicacion para consumir los servicios. para ello modificaremos nusetra clase **StartUp** adicionando el siguiente servicio a la función de **ConfigureServices** así:
 
@@ -553,7 +553,7 @@ Si quiere mantener la ejecución del swager al momento de ejecutar la aplicació
 Con este cambio cada vez que se ejecute la aplicacion utilizando IIS Express llamada automaticamente la pagina de Swagger y no el controlador directamente.
 
 
-![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02/Proyecto-23.png)
+![Proyecto](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-02-WebApi/Proyecto-23.png)
 
 
 ### Autenticación Integrada con Windows

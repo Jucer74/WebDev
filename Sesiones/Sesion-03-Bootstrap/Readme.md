@@ -26,19 +26,19 @@ Necesitamos tener instalado
 # Manos a la Obra
 Vamos a crear un directorio al nivel del proyecto para que realicemos nuestras plantillas.
 
-![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-01.png)
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03-Bootstrap/Bootstrap-01.png)
 
 Ahora iniciamos **Visual Studio Code** y abrimos ese folder como nuestro diectorio principal.
 
-![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-02.png)
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03-Bootstrap/Bootstrap-02.png)
 
 Seleccionamos nuevo archivo y le asignamos el nombre **Details.html**
 
-![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-03.png)
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03-Bootstrap/Bootstrap-03.png)
 
 En la session de Edicion escribimos el signo de exclamacion **!** y presionamos dos veces la tecla **Tab**. Esto nos genera automáticamente la plantilla inicial del codigo HTML así:
 
-![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-04.png)
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03-Bootstrap/Bootstrap-04.png)
 
 ```html
 <!DOCTYPE html>
@@ -136,12 +136,12 @@ Ahora vamos a crear nuestro formulario para poder obtener los datos necesarios p
 
 De esta forma tenemos nuestro formulario Inicial para capturar los datos que vamos a trabajar.
 
-![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-05.png)
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03-Bootstrap/Bootstrap-05.png)
 
 ## La lista de Usuarios
 Ahora vamos a adicionar la lista de usuarios, para ello adicionamos un nuevo archivo llamado **Index.html**
 
-![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-06.png)
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03-Bootstrap/Bootstrap-06.png)
 
 Editamos nuestro archivo y adicionamos una tabla para listar los usuarios de la siguientes forma:
 
@@ -229,7 +229,7 @@ Editamos nuestro archivo y adicionamos una tabla para listar los usuarios de la 
 
 Acá podemos ver el resultado
 
-![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03/Bootstrap-07.png)
+![Bootstrap](https://github.com/Jucer74/WebDev/blob/main/Sesiones/Sesion-03-Bootstrap/Bootstrap-07.png)
 
 
 ## Ejemplos
