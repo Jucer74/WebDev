@@ -60,8 +60,29 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 ```
 
-y en la erminal, situados en el mismo directorio donde esta el archivo ejecutamos el siguiente comando:
+y en la terminal, situados en el mismo directorio donde esta el archivo ejecutamos el siguiente comando:
 
 ```
-uvicorn main:app --reaload
+uvicorn main:app --reload
 ```
+
+Se desplegara ua informacion corespondiente al Inicio del servicio , en eonde se mosstara una URL similar a la siguiente:
+
+```
+http://127.0.0.1:8000 
+```
+
+Copie dicha URL en un navegador y confirme que se depliega el mensaje esperado. en este caso seria :
+
+```
+{"Hello":"World"}
+```
+
+De igual forma puede obtener la documentacion interactiva que es desplegada usando la libreria de Swagger, usando la siguietne URL:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+En este punto puede ver el contenido completo de todos los endpoint expuestos por la API y puede interactuar con ellos directamente.
+
