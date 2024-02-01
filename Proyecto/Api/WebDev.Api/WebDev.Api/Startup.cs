@@ -113,7 +113,7 @@ namespace WebDev.Api
       app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
 
       // Add the Authentication to Enable the JWT Service
-      app.UseAuthentication();
+      //app.UseAuthentication();
     }
   }
 }
